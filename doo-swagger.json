@@ -5,7 +5,7 @@
     "title": "doo"
   },
   "host": "integration.doo.net",
-  "basePath": "/staging",
+  "basePath": "/v1",
   "schemes": [
     "https"
   ],
@@ -931,6 +931,7 @@
     },
     "/qrcodes/{hash}/checkin": {
       "post": {
+        "description" : "Check in specified ticket",
         "produces": [
           "application/json"
         ],
@@ -1028,6 +1029,7 @@
     },
     "/qrcodes/{hash}/reset": {
       "post": {
+        "description" : "Uncheck selected ticket",
         "produces": [
           "application/json"
         ],
