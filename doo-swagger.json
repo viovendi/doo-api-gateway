@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-02-23T09:22:13Z",
-    "title": "doo-test"
+    "title": "doo"
   },
   "host": "integration.doo.net",
   "basePath": "/v1",
