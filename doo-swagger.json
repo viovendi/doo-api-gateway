@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2017-02-23T09:22:13Z",
-    "title": "doo"
+    "title": "doo-test"
   },
   "host": "integration.doo.net",
   "basePath": "/v1",
@@ -84,7 +84,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -113,7 +127,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/events/{eventId}": {
@@ -174,7 +205,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -211,7 +256,19 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/events/{eventId}/attendees": {
@@ -272,7 +329,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/attendees",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -301,7 +372,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/events/{eventId}/details": {
@@ -363,7 +451,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/details",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -392,7 +494,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/events/{eventId}/orders": {
@@ -454,7 +573,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/orders",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -483,7 +616,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/oauth": {
@@ -544,7 +694,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/oauth",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -573,7 +737,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/oauth/zapier": {
@@ -644,7 +825,27 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "200": {
+              "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))\n{\"access_token\":\"$inputRoot.data.access_token\",\"refresh_token\":\"$inputRoot.data.refresh_token\"}"
+              }
+            },
+            "4\\d{2}": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Content-Type": "'application/json'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/oauth",
+          "passthroughBehavior": "when_no_templates",
+          "httpMethod": "POST",
+          "type": "http"
+        }
       },
       "options": {
         "consumes": [
@@ -668,6 +869,23 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
         }
       }
     },
@@ -730,7 +948,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.orderId": "method.request.path.orderId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/orders/{orderId}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -759,7 +991,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/organizers/current": {
@@ -810,7 +1059,18 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/current",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -839,7 +1099,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/qrcodes/{hash}": {
@@ -897,7 +1174,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.hash": "method.request.path.hash"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -926,12 +1217,29 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/qrcodes/{hash}/checkin": {
       "post": {
-        "description" : "Check in specified ticket",
+        "description": "Check in specified ticket",
         "produces": [
           "application/json"
         ],
@@ -995,7 +1303,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.hash": "method.request.path.hash"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}/checkin",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -1024,12 +1346,29 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     },
     "/qrcodes/{hash}/reset": {
       "post": {
-        "description" : "Uncheck selected ticket",
+        "description": "Uncheck selected ticket",
         "produces": [
           "application/json"
         ],
@@ -1093,7 +1432,21 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.hash": "method.request.path.hash"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}/reset",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "type": "http_proxy"
+        }
       },
       "options": {
         "consumes": [
@@ -1122,7 +1475,24 @@
           {
             "api_key": []
           }
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
       }
     }
   },
@@ -2650,5 +3020,272 @@
       },
       "title": "SpecificEventDetailsGetResponse"
     }
+  },
+  "x-amazon-apigateway-documentation": {
+    "version": "1.0.17",
+    "createdDate": "2017-03-09T10:59:58Z",
+    "documentationParts": [
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/events/{eventId}/details",
+          "method": "GET"
+        },
+        "properties": {
+          "description": "Get specific event with additional details"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/events/{eventId}/orders",
+          "method": "GET"
+        },
+        "properties": {
+          "description": "Get all orders for specific event"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/events",
+          "method": "GET"
+        },
+        "properties": {
+          "description": "Get all events for specific organizer"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/oauth",
+          "method": "POST"
+        },
+        "properties": {
+          "description": "Use this endpoint to authorize as a user in our system and get `access_token` and `refresh_token`."
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/orders/{orderId}",
+          "method": "GET"
+        },
+        "properties": {
+          "description": "Get data for specific order"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/qrcodes/{hash}/checkin",
+          "method": "POST"
+        },
+        "properties": {
+          "description": "Check in specified ticket"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/qrcodes/{hash}/reset",
+          "method": "POST"
+        },
+        "properties": {
+          "description": "Uncheck selected ticket"
+        }
+      },
+      {
+        "location": {
+          "type": "METHOD",
+          "path": "/qrcodes/{hash}",
+          "method": "GET"
+        },
+        "properties": {
+          "description": "Get information about QR code"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "Empty"
+        },
+        "properties": {
+          "title": "Empty Schema"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "OauthPostRequest"
+        },
+        "properties": {
+          "description": "Request model for `POST /oauth`"
+        }
+      },
+      {
+        "location": {
+          "type": "MODEL",
+          "name": "OauthPostResponse"
+        },
+        "properties": {
+          "description": "Response model for `POST /oauth`"
+        }
+      },
+      {
+        "location": {
+          "type": "QUERY_PARAMETER",
+          "path": "/events",
+          "method": "GET",
+          "name": "page"
+        },
+        "properties": {
+          "description": "Page number"
+        }
+      },
+      {
+        "location": {
+          "type": "QUERY_PARAMETER",
+          "path": "/events",
+          "method": "GET",
+          "name": "page_size"
+        },
+        "properties": {
+          "description": "Page size"
+        }
+      },
+      {
+        "location": {
+          "type": "QUERY_PARAMETER",
+          "path": "/events",
+          "method": "GET",
+          "name": "status"
+        },
+        "properties": {
+          "description": "Use this parameter to specify type of the events. Available types: live, draft, done. You can specify few types simultaneosly using `,` as a separator: `...&status=live,draft,done`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/events",
+          "method": "GET",
+          "name": "Accept"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/oauth",
+          "method": "POST",
+          "name": "Accept"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/orders/{orderId}",
+          "method": "GET",
+          "name": "Accept"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/events",
+          "method": "GET",
+          "name": "Content-Type"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/oauth",
+          "method": "POST",
+          "name": "Content-Type"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/orders/{orderId}",
+          "method": "GET",
+          "name": "Content-Type"
+        },
+        "properties": {
+          "description": "Default `application/json`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/events",
+          "method": "GET",
+          "name": "authorization"
+        },
+        "properties": {
+          "description": "Should be `Bearer access_token`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/orders/{orderId}",
+          "method": "GET",
+          "name": "authorization"
+        },
+        "properties": {
+          "description": "Should be `Bearer access_token`"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/events",
+          "method": "GET",
+          "name": "x-api-key"
+        },
+        "properties": {
+          "description": "API Key"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/oauth",
+          "method": "POST",
+          "name": "x-api-key"
+        },
+        "properties": {
+          "description": "API Key"
+        }
+      },
+      {
+        "location": {
+          "type": "REQUEST_HEADER",
+          "path": "/orders/{orderId}",
+          "method": "GET",
+          "name": "x-api-key"
+        },
+        "properties": {
+          "description": "API Key"
+        }
+      }
+    ]
   }
 }
