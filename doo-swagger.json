@@ -1,0 +1,2652 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2017-02-23T09:22:13Z",
+    "title": "doo"
+  },
+  "host": "integration.doo.net",
+  "basePath": "/staging",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "description": "Get all events for specific organizer",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Page size",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Use this parameter to specify type of the events. Available types: live, draft, done. You can specify few types simultaneosly using `,` as a separator: `...&status=live,draft,done`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/EventsGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/SpecificEventGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/attendees": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/SpecificEventAttendeesGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/details": {
+      "get": {
+        "description": "Get specific event with additional details",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/SpecificEventDetailsGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/orders": {
+      "get": {
+        "description": "Get all orders for specific event",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/SpecificEventOrdersGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/oauth": {
+      "post": {
+        "description": "Use this endpoint to authorize as a user in our system and get `access_token` and `refresh_token`.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/hal+json",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "OauthPostRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OauthPostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/OauthPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/oauth/zapier": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/problem+json",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "OauthZapierPostRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OauthZapierPostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/OauthZapierPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "description": "Get data for specific order",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/SpecificOrderGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/organizers/current": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/CurrentOrganizerGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/qrcodes/{hash}": {
+      "get": {
+        "description": "Get information about QR code",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/QrcodeGetDetailsResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/qrcodes/{hash}/checkin": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "405 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/qrcodes/{hash}/reset": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "405 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "OauthPostResponse": {
+      "type": "object",
+      "required": [
+        "_links",
+        "data",
+        "developer_message",
+        "response_status",
+        "user_message"
+      ],
+      "properties": {
+        "response_status": {
+          "type": "integer"
+        },
+        "developer_message": {
+          "type": "string"
+        },
+        "user_message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string"
+            },
+            "refresh_token": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "access_token",
+            "refresh_token"
+          ]
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          },
+          "required": [
+            "self"
+          ]
+        }
+      },
+      "title": "OauthResponse",
+      "description": "Response model for `POST /oauth`"
+    },
+    "SpecificEventOrdersGetResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "first": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "last": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "_embedded": {
+          "type": "object",
+          "properties": {
+            "orders": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "start_date": {
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "type": "string"
+                      },
+                      "event_type": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "order": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "event_name": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "invoice_id": {
+                        "type": "string"
+                      },
+                      "first_name": {
+                        "type": "string"
+                      },
+                      "last_name": {
+                        "type": "string"
+                      },
+                      "cancellation_date": {
+                        "type": "string"
+                      },
+                      "removed_date": {
+                        "type": "string"
+                      },
+                      "active_date": {
+                        "type": "string"
+                      },
+                      "order_amount": {
+                        "type": "string"
+                      },
+                      "payment": {
+                        "type": "object",
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "payment_date": {
+                            "type": "string"
+                          },
+                          "booking_date": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "page_size": {
+          "type": "integer"
+        },
+        "total_items": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        }
+      },
+      "title": "SpecificEventOrdersGetResponse"
+    },
+    "QrcodeGetDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "response_status": {
+          "type": "integer"
+        },
+        "developer_message": {
+          "type": "string"
+        },
+        "user_message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "item": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "event_ticket_id": {
+                  "type": "integer"
+                },
+                "custom_price": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "checkin_link": {
+                  "type": "string"
+                },
+                "pdf_link": {
+                  "type": "string"
+                },
+                "name_tag_link": {
+                  "type": "string"
+                },
+                "passbook_link": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "QrcodeGetDetailsResponse"
+    },
+    "StatusResponse": {
+      "type": "object",
+      "required": [
+        "developer_message",
+        "response_status",
+        "user_message"
+      ],
+      "properties": {
+        "developer_message": {
+          "type": "string"
+        },
+        "response_status": {
+          "type": "integer"
+        },
+        "user_message": {
+          "type": "string"
+        }
+      },
+      "title": "StatusResponse"
+    },
+    "SpecificEventGetResponse": {},
+    "OauthZapierPostRequest": {
+      "type": "object",
+      "required": [
+        "client_id",
+        "client_secret",
+        "grant_type"
+      ],
+      "properties": {
+        "client_secret": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "grant_type": {
+          "type": "string"
+        },
+        "client_id": {
+          "type": "string",
+          "default": "zapier"
+        },
+        "redirect_uri": {
+          "type": "string",
+          "default": "https://www.doo.net"
+        }
+      },
+      "title": "OauthZapierPostRequest"
+    },
+    "OauthPostRequest": {
+      "type": "object",
+      "required": [
+        "client_id",
+        "grant_type",
+        "password",
+        "username"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "grant_type": {
+          "type": "string",
+          "default": "password"
+        },
+        "client_id": {
+          "type": "string",
+          "default": "viovendi_web"
+        }
+      },
+      "title": "OauthRequest",
+      "description": "Request model for `POST /oauth`"
+    },
+    "EventsGetResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "first": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "last": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "_embedded": {
+          "type": "object",
+          "properties": {
+            "events": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "event_type": {
+                    "type": "string"
+                  },
+                  "booking_approval": {
+                    "type": "string"
+                  },
+                  "total_event_capacity": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "organizer_name": {
+                    "type": "string"
+                  },
+                  "total_amount": {
+                    "type": "integer"
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "image_cover": {
+                    "type": "string"
+                  },
+                  "venue_address": {
+                    "type": "string"
+                  },
+                  "venue_name": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "short_description": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "fees_type": {
+                    "type": "integer"
+                  },
+                  "vat_option": {
+                    "type": "integer"
+                  },
+                  "vat_option_text": {
+                    "type": "string"
+                  },
+                  "ticket_option": {
+                    "type": "boolean"
+                  },
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "image_shape_type": {
+                    "type": "string"
+                  },
+                  "participants_count": {
+                    "type": "integer"
+                  },
+                  "creation_status": {
+                    "type": "integer"
+                  },
+                  "is_publishable": {
+                    "type": "boolean"
+                  },
+                  "image_preview_url": {
+                    "type": "string"
+                  },
+                  "image_cover_preview_url": {
+                    "type": "string"
+                  },
+                  "image_id": {
+                    "type": "string"
+                  },
+                  "image_cover_id": {
+                    "type": "string"
+                  },
+                  "email_attachments": {
+                    "type": "string"
+                  },
+                  "total_revenue": {
+                    "type": "integer"
+                  },
+                  "has_order_with_booking_approval": {
+                    "type": "boolean"
+                  },
+                  "demo_screen": {
+                    "type": "array"
+                  },
+                  "show_bank_transfer": {
+                    "type": "boolean"
+                  },
+                  "has_coupons": {
+                    "type": "boolean"
+                  },
+                  "has_access_codes": {
+                    "type": "boolean"
+                  },
+                  "ticket_limitation": {
+                    "type": "object",
+                    "properties": {
+                      "min": {
+                        "type": "integer"
+                      },
+                      "max": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "place_id": {
+                        "type": "string"
+                      },
+                      "latitude": {
+                        "type": "string"
+                      },
+                      "longitude": {
+                        "type": "string"
+                      },
+                      "street_address": {
+                        "type": "string"
+                      },
+                      "street_number": {
+                        "type": "string"
+                      },
+                      "route": {
+                        "type": "string"
+                      },
+                      "city": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "timezone_id": {
+                        "type": "string"
+                      },
+                      "postcode": {
+                        "type": "string"
+                      },
+                      "administrative_area_level_1": {
+                        "type": "string"
+                      },
+                      "administrative_area_level_2": {
+                        "type": "string"
+                      },
+                      "administrative_area_level_3": {
+                        "type": "string"
+                      },
+                      "administrative_area_level_4": {
+                        "type": "string"
+                      },
+                      "administrative_area_level_5": {
+                        "type": "string"
+                      },
+                      "sublocality_level_1": {
+                        "type": "string"
+                      },
+                      "sublocality_level_2": {
+                        "type": "string"
+                      },
+                      "sublocality_level_3": {
+                        "type": "string"
+                      },
+                      "sublocality_level_4": {
+                        "type": "string"
+                      },
+                      "sublocality_level_5": {
+                        "type": "string"
+                      },
+                      "formatted_address": {
+                        "type": "string"
+                      },
+                      "timezone_offset": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "ticket_categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "price": {
+                          "type": "integer"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "show_remaining_capacity": {
+                          "type": "boolean"
+                        },
+                        "max": {
+                          "type": "integer"
+                        },
+                        "min": {
+                          "type": "integer"
+                        },
+                        "vat": {
+                          "type": "integer"
+                        },
+                        "vat_percent": {
+                          "type": "integer"
+                        },
+                        "start_date": {
+                          "type": "string"
+                        },
+                        "relative_start_date": {
+                          "type": "string"
+                        },
+                        "relative_start_date_type": {
+                          "type": "string"
+                        },
+                        "relative_end_date": {
+                          "type": "string"
+                        },
+                        "relative_end_date_type": {
+                          "type": "string"
+                        },
+                        "display_order": {
+                          "type": "string"
+                        },
+                        "hide_ticket_category": {
+                          "type": "boolean"
+                        },
+                        "available_amount": {
+                          "type": "integer"
+                        },
+                        "is_featured": {
+                          "type": "boolean"
+                        },
+                        "is_ended": {
+                          "type": "boolean"
+                        },
+                        "taken_amount": {
+                          "type": "string"
+                        },
+                        "ticket_price": {
+                          "type": "integer"
+                        },
+                        "ticket_fees": {
+                          "type": "integer"
+                        },
+                        "max_available_amount": {
+                          "type": "integer"
+                        },
+                        "min_available_amount": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "questions": {
+                    "type": "object",
+                    "properties": {
+                      "buyer_questions": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "default_questions": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "additional_questions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "field_type": {
+                                  "type": "string"
+                                },
+                                "required": {
+                                  "type": "boolean"
+                                },
+                                "field_options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "options": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "label": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "attendee_questions": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "default_questions": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "additional_questions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "field_type": {
+                                  "type": "string"
+                                },
+                                "required": {
+                                  "type": "boolean"
+                                },
+                                "field_options": {
+                                  "type": "object",
+                                  "properties": {
+                                    "description": {
+                                      "type": "string"
+                                    },
+                                    "options": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "label": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "contact": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "organization": {
+                        "type": "string"
+                      },
+                      "organizer_id": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "terms": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "event_attributes": {
+                    "type": "object",
+                    "properties": {
+                      "attributes": {
+                        "type": "array"
+                      },
+                      "templates": {
+                        "type": "array"
+                      }
+                    }
+                  },
+                  "_links": {
+                    "type": "object",
+                    "properties": {
+                      "self": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "page_size": {
+          "type": "integer"
+        },
+        "total_items": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        }
+      },
+      "title": "EventsGetResponse"
+    },
+    "SpecificOrderGetResponse": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "start_date": {
+              "type": "string"
+            },
+            "end_date": {
+              "type": "string"
+            },
+            "event_type": {
+              "type": "string"
+            },
+            "vat_option": {
+              "type": "integer"
+            },
+            "booking_approval": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "ticket_categories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "string"
+                  },
+                  "vat": {
+                    "type": "string"
+                  },
+                  "vat_percent": {
+                    "type": "string"
+                  },
+                  "organizer_price": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "order_details": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "member_id": {
+              "type": "string"
+            },
+            "invoice_id": {
+              "type": "string"
+            },
+            "salutation": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "first_name": {
+              "type": "string"
+            },
+            "last_name": {
+              "type": "string"
+            },
+            "company_name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "house_num": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "object",
+              "properties": {
+                "de": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                }
+              }
+            },
+            "zip": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "cancellation_date": {
+              "type": "string"
+            },
+            "removed_date": {
+              "type": "string"
+            },
+            "organizer_comment": {
+              "type": "string"
+            },
+            "total_coupon_discount": {
+              "type": "integer"
+            },
+            "regenerate_requested_date": {
+              "type": "string"
+            },
+            "promotion_code": {
+              "type": "string"
+            },
+            "access_code": {
+              "type": "string"
+            },
+            "buyer_hash": {
+              "type": "string"
+            },
+            "booking_approval_date": {
+              "type": "string"
+            },
+            "buyer_uploaded_files_answers": {
+              "type": "boolean"
+            },
+            "cancellation_invoice_id": {
+              "type": "string"
+            },
+            "attendees": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "member_id": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "company_name": {
+                    "type": "string"
+                  },
+                  "salutation": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "zip": {
+                    "type": "string"
+                  },
+                  "street": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "object",
+                    "properties": {
+                      "de": {
+                        "type": "string"
+                      },
+                      "en": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "house_num": {
+                    "type": "string"
+                  },
+                  "ticket": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "event_ticket_id": {
+                        "type": "string"
+                      },
+                      "custom_price": {
+                        "type": "boolean"
+                      },
+                      "pdf_link": {
+                        "type": "string"
+                      },
+                      "name_tag_link": {
+                        "type": "string"
+                      },
+                      "passbook_link": {
+                        "type": "string"
+                      },
+                      "checkin_link": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "answers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "attendee_id": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "answer": {
+                          "type": "string"
+                        },
+                        "question": {
+                          "type": "string"
+                        },
+                        "display_type": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "buyer_answers": {
+              "type": "array"
+            },
+            "payment": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "string"
+                },
+                "method": {
+                  "type": "string"
+                },
+                "payment_date": {
+                  "type": "string"
+                },
+                "booking_date": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "transaction_fees": {
+                  "type": "string"
+                },
+                "original_tickets": {
+                  "type": "object",
+                  "properties": {
+                    "tickets_archive_url": {
+                      "type": "string"
+                    },
+                    "nametags_archive_url": {
+                      "type": "string"
+                    },
+                    "tickets_archive_zipped": {
+                      "type": "boolean"
+                    },
+                    "nametags_archive_zipped": {
+                      "type": "boolean"
+                    },
+                    "passbook_link": {
+                      "type": "array"
+                    }
+                  }
+                },
+                "expected_attachments_link": {
+                  "type": "array"
+                },
+                "invoice_file_url": {
+                  "type": "string"
+                },
+                "cancellation_invoice_link": {
+                  "type": "string"
+                }
+              }
+            },
+            "answers_salutation_translations": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "string"
+                },
+                "2": {
+                  "type": "string"
+                }
+              }
+            },
+            "answer_title_translations": {
+              "type": "object",
+              "properties": {
+                "1": {
+                  "type": "string"
+                },
+                "2": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "cancellation_invoice": {
+          "type": "string"
+        },
+        "invoice_details": {
+          "type": "object",
+          "properties": {
+            "use_company_name": {
+              "type": "boolean"
+            }
+          }
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "SpecificOrderGetResponse"
+    },
+    "OauthZapierPostResponse": {
+      "type": "object",
+      "required": [
+        "access_token",
+        "refresh_token"
+      ],
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        }
+      },
+      "title": "OauthZapierResponse"
+    },
+    "SpecificEventAttendeesGetResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "last": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            },
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "_embedded": {
+          "type": "object",
+          "properties": {
+            "attendees": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "attendee_first_name": {
+                    "type": "string"
+                  },
+                  "attendee_id": {
+                    "type": "string"
+                  },
+                  "attendee_last_name": {
+                    "type": "string"
+                  },
+                  "attendee_status": {
+                    "type": "string"
+                  },
+                  "buyer_first_name": {
+                    "type": "string"
+                  },
+                  "buyer_last_name": {
+                    "type": "string"
+                  },
+                  "category_id": {
+                    "type": "integer"
+                  },
+                  "category_name": {
+                    "type": "string"
+                  },
+                  "is_checked": {
+                    "type": "boolean"
+                  },
+                  "order_id": {
+                    "type": "integer"
+                  },
+                  "ticket_hash": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "page": {
+          "type": "integer"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "page_size": {
+          "type": "integer"
+        },
+        "total_items": {
+          "type": "integer"
+        }
+      },
+      "title": "SpecificEventAttendeesGetResponse"
+    },
+    "CurrentOrganizerGetResponse": {},
+    "SpecificEventDetailsGetResponse": {
+      "type": "object",
+      "properties": {
+        "response_status": {
+          "type": "integer"
+        },
+        "developer_message": {
+          "type": "string"
+        },
+        "user_message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "event_type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "start_date": {
+              "type": "string"
+            },
+            "end_date": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "integer"
+            },
+            "has_order_with_booking_approval": {
+              "type": "boolean"
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "place_id": {
+                  "type": "string"
+                },
+                "latitude": {
+                  "type": "string"
+                },
+                "longitude": {
+                  "type": "string"
+                },
+                "street_address": {
+                  "type": "string"
+                },
+                "street_number": {
+                  "type": "string"
+                },
+                "route": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                "timezone_id": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "administrative_area_level_1": {
+                  "type": "string"
+                },
+                "administrative_area_level_2": {
+                  "type": "string"
+                },
+                "administrative_area_level_3": {
+                  "type": "string"
+                },
+                "administrative_area_level_4": {
+                  "type": "string"
+                },
+                "administrative_area_level_5": {
+                  "type": "string"
+                },
+                "sublocality_level_1": {
+                  "type": "string"
+                },
+                "sublocality_level_2": {
+                  "type": "string"
+                },
+                "sublocality_level_3": {
+                  "type": "string"
+                },
+                "sublocality_level_4": {
+                  "type": "string"
+                },
+                "sublocality_level_5": {
+                  "type": "string"
+                },
+                "formatted_address": {
+                  "type": "string"
+                },
+                "timezone_offset": {
+                  "type": "integer"
+                }
+              }
+            },
+            "ticket_categories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "is_featured": {
+                    "type": "boolean"
+                  },
+                  "is_ended": {
+                    "type": "boolean"
+                  },
+                  "taken_amount": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "orders": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "order_date": {
+                    "type": "string"
+                  },
+                  "is_manual_registration": {
+                    "type": "boolean"
+                  },
+                  "is_unpaid_bank_transfer": {
+                    "type": "boolean"
+                  },
+                  "tickets": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "ticket_category_name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "cancelled_date": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "participants_count": {
+              "type": "integer"
+            },
+            "total_revenue": {
+              "type": "integer"
+            },
+            "manual_revenue": {
+              "type": "integer"
+            },
+            "invoices_archive_url": {
+              "type": "string"
+            },
+            "participants_excel_url": {
+              "type": "string"
+            },
+            "show_event_created_hint": {
+              "type": "boolean"
+            },
+            "show_email_campaign_promotion": {
+              "type": "boolean"
+            }
+          }
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "SpecificEventDetailsGetResponse"
+    }
+  }
+}
