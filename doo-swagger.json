@@ -2114,7 +2114,7 @@
                           "type": "string"
                         },
                         "display_order": {
-                          "type": "string"
+                          "type": "integer"
                         },
                         "hide_ticket_category": {
                           "type": "boolean"
@@ -2326,6 +2326,9 @@
     "SpecificOrderGetResponse": {
       "type": "object",
       "properties": {
+        "contact_center": {
+          "type": "boolean"
+        },
         "event": {
           "type": "object",
           "properties": {
@@ -2365,16 +2368,16 @@
                     "type": "string"
                   },
                   "price": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "vat": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "vat_percent": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "organizer_price": {
-                    "type": "string"
+                    "type": "integer"
                   }
                 }
               }
@@ -2535,7 +2538,7 @@
                         "type": "string"
                       },
                       "event_ticket_id": {
-                        "type": "string"
+                        "type": "integer"
                       },
                       "custom_price": {
                         "type": "boolean"
@@ -2602,7 +2605,7 @@
                   "type": "string"
                 },
                 "transaction_fees": {
-                  "type": "string"
+                  "type": "object"
                 },
                 "original_tickets": {
                   "type": "object",
