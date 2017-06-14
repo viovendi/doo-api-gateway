@@ -1168,6 +1168,17 @@
                 "type": "string"
               }
             }
+          },
+          "401": {
+            "description": "401 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
           }
         },
         "security": [
@@ -1278,6 +1289,17 @@
         "responses": {
           "200": {
             "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "401 response",
             "schema": {
               "$ref": "#/definitions/StatusResponse"
             },
@@ -1766,6 +1788,9 @@
           "type": "integer"
         },
         "user_message": {
+          "type": "string"
+        },
+        "data": {
           "type": "string"
         }
       },
