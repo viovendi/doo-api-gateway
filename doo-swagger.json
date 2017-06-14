@@ -1880,7 +1880,7 @@
                     "type": "string"
                   },
                   "id": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "title": {
                     "type": "string"
@@ -2069,7 +2069,7 @@
                       "type": "object",
                       "properties": {
                         "id": {
-                          "type": "string"
+                          "type": "integer"
                         },
                         "name": {
                           "type": "string"
@@ -2153,7 +2153,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string"
+                            "type": "integer"
                           },
                           "default_questions": {
                             "type": "array",
@@ -2203,7 +2203,7 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string"
+                            "type": "integer"
                           },
                           "default_questions": {
                             "type": "array",
@@ -2359,7 +2359,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "name": {
                     "type": "string"
@@ -2563,7 +2563,7 @@
                           "type": "string"
                         },
                         "id": {
-                          "type": "string"
+                          "type": "integer"
                         },
                         "answer": {
                           "type": "string"
@@ -2815,7 +2815,7 @@
               "type": "string"
             },
             "id": {
-              "type": "string"
+              "type": "integer"
             },
             "title": {
               "type": "string"
@@ -2912,7 +2912,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "name": {
                     "type": "string"
@@ -2941,7 +2941,7 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "first_name": {
                     "type": "string"
