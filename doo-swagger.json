@@ -1830,7 +1830,6 @@
       "title": "StatusResponse"
     },
     "SpecificEventGetResponse": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
       "description": "",
       "type": "object",
       "properties": {
@@ -3300,7 +3299,277 @@
       "title": "SpecificEventAttendeesGetResponse"
     },
     "CurrentOrganizerGetResponse": {
+      "description": "",
       "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "tel": {
+          "type": "string"
+        },
+        "recently_logo": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "image_id": {
+                "type": "string"
+              },
+              "image_shape_type": {
+                "type": "string"
+              },
+              "original_url": {
+                "type": "string"
+              },
+              "preview_url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "recently_cover": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "cover_id": {
+                "type": "string"
+              },
+              "original_url": {
+                "type": "string"
+              },
+              "preview_url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "recently_contacts": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "allowed_access_code_amount": {
+          "type": "number"
+        },
+        "allowed_coupon_code_amount": {
+          "type": "number"
+        },
+        "recently_vat_texts": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "recently_attribute_files": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "invoice_details": {
+          "type": "object",
+          "properties": {
+            "account_holder": {
+              "type": "string"
+            },
+            "iban": {
+              "type": "string"
+            },
+            "bic": {
+              "type": "string"
+            },
+            "bank_name": {
+              "type": "string"
+            },
+            "vat_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "zip_code": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "house": {
+              "type": "string"
+            }
+          }
+        },
+        "fees": {
+          "type": "object",
+          "properties": {
+            "service_fees": {
+              "type": "number"
+            },
+            "payment_fees": {
+              "type": "number"
+            },
+            "viovendi_fees": {
+              "type": "number"
+            }
+          }
+        },
+        "product_fees": {
+          "type": "object",
+          "properties": {
+            "service_fees": {
+              "type": "number"
+            },
+            "payment_fees": {
+              "type": "number"
+            },
+            "viovendi_fees": {
+              "type": "number"
+            }
+          }
+        },
+        "require_vat_id": {
+          "type": "boolean"
+        },
+        "standard_ticket_option": {},
+        "standard_email_attachments": {},
+        "manager_events_per_page": {
+          "type": "number"
+        },
+        "bookings_per_page": {
+          "type": "number"
+        },
+        "event_bookings_per_page": {
+          "type": "number"
+        },
+        "event_attributes": {
+          "type": "object",
+          "properties": {
+            "templates": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {},
+                  "organizer_id": {
+                    "type": "number"
+                  },
+                  "event_id": {
+                    "type": "number"
+                  },
+                  "is_favourite": {},
+                  "default": {
+                    "type": "boolean"
+                  },
+                  "template": {
+                    "type": "boolean"
+                  },
+                  "controlling": {
+                    "type": "boolean"
+                  },
+                  "order": {},
+                  "data": {}
+                }
+              }
+            }
+          }
+        },
+        "manager_contacts_per_page": {
+          "type": "number"
+        },
+        "manager_email_campaigns_per_page": {
+          "type": "number"
+        },
+        "team_members_per_page": {
+          "type": "number"
+        },
+        "has_events": {
+          "type": "boolean"
+        },
+        "has_live_events": {
+          "type": "boolean"
+        },
+        "has_paid_events": {
+          "type": "boolean"
+        },
+        "demo_screens": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "has_events_with_taxes": {
+          "type": "boolean"
+        },
+        "registration_current_step": {
+          "type": "string"
+        },
+        "dashboard_guide_show": {
+          "type": "boolean"
+        },
+        "event_guide_show": {
+          "type": "boolean"
+        },
+        "disabled_guided_tour": {
+          "type": "boolean"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "title": "CurrentOrganizerGetResponse"
     },
     "SpecificEventDetailsGetResponse": {
