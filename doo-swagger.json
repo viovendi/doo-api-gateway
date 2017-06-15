@@ -1179,6 +1179,28 @@
                 "type": "string"
               }
             }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "405 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
           }
         },
         "security": [
@@ -1300,6 +1322,17 @@
           },
           "401": {
             "description": "401 response",
+            "schema": {
+              "$ref": "#/definitions/StatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
             "schema": {
               "$ref": "#/definitions/StatusResponse"
             },
@@ -1796,7 +1829,450 @@
       },
       "title": "StatusResponse"
     },
-    "SpecificEventGetResponse": {},
+    "SpecificEventGetResponse": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "user_id": {
+          "type": "number"
+        },
+        "contact_detail_id": {
+          "type": "number"
+        },
+        "email_attachment_id": {},
+        "location_id": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "organizer_name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "short_description": {
+          "type": "string"
+        },
+        "venue_address": {
+          "type": "string"
+        },
+        "venue_name": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string"
+        },
+        "end_date": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "update_date": {
+          "type": "string"
+        },
+        "draft_date": {
+          "type": "string"
+        },
+        "live_date": {
+          "type": "string"
+        },
+        "is_deleted": {
+          "type": "string"
+        },
+        "deletion_date": {},
+        "cancelled_date": {},
+        "short_name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comment": {},
+        "event_type": {
+          "type": "string"
+        },
+        "bank_transfer_period": {
+          "type": "string"
+        },
+        "booking_approval": {
+          "type": "string"
+        },
+        "duplicate_email_detection": {
+          "type": "string"
+        },
+        "total_event_capacity": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "total_amount": {
+          "type": "number"
+        },
+        "image_shape_type": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "image_cover": {
+          "type": "string"
+        },
+        "has_manual_approve": {
+          "type": "boolean"
+        },
+        "has_coupons": {
+          "type": "boolean"
+        },
+        "has_access_codes": {
+          "type": "boolean"
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "place_id": {
+              "type": "string"
+            },
+            "latitude": {
+              "type": "string"
+            },
+            "longitude": {
+              "type": "string"
+            },
+            "street_address": {},
+            "street_number": {},
+            "route": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "timezone_id": {
+              "type": "string"
+            },
+            "postcode": {
+              "type": "string"
+            },
+            "administrative_area_level_1": {
+              "type": "string"
+            },
+            "administrative_area_level_2": {
+              "type": "string"
+            },
+            "administrative_area_level_3": {
+              "type": "string"
+            },
+            "administrative_area_level_4": {
+              "type": "string"
+            },
+            "administrative_area_level_5": {
+              "type": "string"
+            },
+            "sublocality_level_1": {
+              "type": "string"
+            },
+            "sublocality_level_2": {
+              "type": "string"
+            },
+            "sublocality_level_3": {
+              "type": "string"
+            },
+            "sublocality_level_4": {
+              "type": "string"
+            },
+            "sublocality_level_5": {
+              "type": "string"
+            },
+            "formatted_address": {
+              "type": "string"
+            },
+            "timezone_offset": {
+              "type": "number"
+            }
+          }
+        },
+        "questions": {
+          "type": "object",
+          "properties": {
+            "buyer_questions": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "default_questions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "additional_questions": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "question_id": {
+                        "type": "number"
+                      },
+                      "answer_id": {},
+                      "answer": {},
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "field_type": {
+                        "type": "string"
+                      },
+                      "field_options": {
+                        "type": "object",
+                        "properties": {
+                          "size": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "order": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "attendee_questions": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "default_questions": {
+                  "type": "array",
+                  "items": {
+                    "properties": {}
+                  }
+                },
+                "additional_questions": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "question_id": {
+                        "type": "number"
+                      },
+                      "answer_id": {},
+                      "answer": {},
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "field_type": {
+                        "type": "string"
+                      },
+                      "field_options": {
+                        "type": "object",
+                        "properties": {
+                          "size": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "order": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "organization": {
+              "type": "string"
+            },
+            "organizer_id": {
+              "type": "string"
+            }
+          }
+        },
+        "terms": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            }
+          }
+        },
+        "event_attributes": {
+          "type": "object",
+          "properties": {
+            "attributes": {
+              "type": "array",
+              "items": {
+                "properties": {}
+              }
+            },
+            "templates": {
+              "type": "array",
+              "items": {
+                "properties": {}
+              }
+            }
+          }
+        },
+        "ticket_limitation": {
+          "type": "object",
+          "properties": {
+            "min": {},
+            "max": {}
+          }
+        },
+        "event_settings": {
+          "type": "object",
+          "properties": {
+            "custom_checkout_text": {
+              "type": "object",
+              "properties": {
+                "de": {
+                  "type": "string"
+                },
+                "en": {
+                  "type": "string"
+                }
+              }
+            },
+            "has_white_labels": {
+              "type": "number"
+            },
+            "payment_bank_transfer": {
+              "type": "number"
+            },
+            "payment_credit_card": {
+              "type": "number"
+            },
+            "payment_paypal": {
+              "type": "number"
+            }
+          }
+        },
+        "amount": {
+          "type": "number"
+        },
+        "ticket_categories": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "show_remaining_capacity": {
+                "type": "boolean"
+              },
+              "min": {
+                "type": "string"
+              },
+              "vat": {
+                "type": "number"
+              },
+              "vat_percent": {
+                "type": "number"
+              },
+              "start_date": {
+                "type": "string"
+              },
+              "display_order": {
+                "type": "string"
+              },
+              "available_amount": {
+                "type": "number"
+              },
+              "is_featured": {
+                "type": "boolean"
+              },
+              "is_ended": {
+                "type": "boolean"
+              },
+              "ticket_price": {
+                "type": "number"
+              },
+              "ticket_fees": {
+                "type": "number"
+              },
+              "max_available_amount": {
+                "type": "number"
+              },
+              "min_available_amount": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "participants_count": {
+          "type": "number"
+        },
+        "show_bank_transfer": {
+          "type": "boolean"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "SpecificEventGetResponse"
+    },
     "OauthZapierPostRequest": {
       "type": "object",
       "required": [
@@ -2823,7 +3299,10 @@
       },
       "title": "SpecificEventAttendeesGetResponse"
     },
-    "CurrentOrganizerGetResponse": {},
+    "CurrentOrganizerGetResponse": {
+      "type": "object",
+      "title": "CurrentOrganizerGetResponse"
+    },
     "SpecificEventDetailsGetResponse": {
       "type": "object",
       "properties": {
