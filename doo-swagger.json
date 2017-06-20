@@ -13,8 +13,12 @@
     "/events": {
       "get": {
         "description": "Get all events for specific organizer",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -105,7 +109,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -149,8 +154,12 @@
     },
     "/events/{eventId}": {
       "get": {
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -226,7 +235,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -273,8 +283,12 @@
     },
     "/events/{eventId}/attendees": {
       "get": {
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -350,7 +364,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -395,8 +410,12 @@
     "/events/{eventId}/details": {
       "get": {
         "description": "Get specific event with additional details",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -472,7 +491,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -517,8 +537,12 @@
     "/events/{eventId}/orders": {
       "get": {
         "description": "Get all orders for specific event",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -594,7 +618,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -643,8 +668,8 @@
           "application/json"
         ],
         "produces": [
-          "application/hal+json",
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -715,7 +740,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -764,7 +790,8 @@
         ],
         "produces": [
           "application/problem+json",
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -852,7 +879,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -892,8 +920,12 @@
     "/orders/{orderId}": {
       "get": {
         "description": "Get data for specific order",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -969,7 +1001,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -1013,8 +1046,12 @@
     },
     "/organizers/current": {
       "get": {
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -1077,7 +1114,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -1122,8 +1160,12 @@
     "/qrcodes/{hash}": {
       "get": {
         "description": "Get information about QR code",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -1228,7 +1270,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -1273,8 +1316,12 @@
     "/qrcodes/{hash}/checkin": {
       "post": {
         "description": "Check in specified ticket",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -1379,7 +1426,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
@@ -1424,8 +1472,12 @@
     "/qrcodes/{hash}/reset": {
       "post": {
         "description": "Uncheck selected ticket",
-        "produces": [
+        "consumes": [
           "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
         ],
         "parameters": [
           {
@@ -1508,7 +1560,8 @@
           "application/json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/hal+json"
         ],
         "responses": {
           "200": {
