@@ -898,6 +898,11 @@
             }
           }
         },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
         "x-amazon-apigateway-integration": {
           "responses": {
             "default": {
