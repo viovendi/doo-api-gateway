@@ -1962,7 +1962,7 @@
           "type": "string"
         },
         "duplicate_email_detection": {
-          "type": "string"
+          "type": "boolean"
         },
         "total_event_capacity": {
           "type": "string"
