@@ -1964,9 +1964,6 @@
         "duplicate_email_detection": {
           "type": "boolean"
         },
-        "test_property_vova": {
-          "type": "string"
-        },
         "total_event_capacity": {
           "type": "string"
         },
@@ -2325,10 +2322,7 @@
           }
         }
       },
-      "title": "SpecificEventGetResponse",
-      "required": [
-        "test_property_vova"
-      ]
+      "title": "SpecificEventGetResponse"
     },
     "OauthZapierPostRequest": {
       "type": "object",
