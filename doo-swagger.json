@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2017-02-23T09:22:13Z",
-    "title": "doo"
+    "version": "1.0.0",
+    "title": "doo API Documentation"
   },
   "host": "integration.doo.net",
   "basePath": "/v1",
