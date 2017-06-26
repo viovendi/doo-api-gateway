@@ -2283,8 +2283,17 @@
             "postcode",
             "administrative_area_level_1",
             "administrative_area_level_2",
+            "administrative_area_level_3",
+            "administrative_area_level_4",
+            "administrative_area_level_5",
             "formatted_address",
-            "timezone_offset"
+            "timezone_offset",
+            "street_address",
+            "sublocality_level_1",
+            "sublocality_level_2",
+            "sublocality_level_3",
+            "sublocality_level_4",
+            "sublocality_level_5"
           ]
         },
         "questions": {
@@ -2523,7 +2532,8 @@
               "ticket_price",
               "ticket_fees",
               "max_available_amount",
-              "min_available_amount"
+              "min_available_amount",
+              "start_date"
             ],
             "properties": {
               "id": {
@@ -2694,7 +2704,16 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "vat_option_text",
+        "email_attachments",
+        "email_attachment_id",
+        "short_description",
+        "organizer_name",
+        "venue_name",
+        "cancelled_date",
+        "deletion_date",
+        "comment"
       ]
     },
     "QrcodeGetDetailsResponse": {
