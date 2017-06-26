@@ -2652,7 +2652,6 @@
         }
       },
       "required": [
-        "test-vova",
         "id",
         "user_id",
         "contact_detail_id",
