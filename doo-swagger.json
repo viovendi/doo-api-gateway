@@ -2111,8 +2111,7 @@
           "minLength": 1
         },
         "image_cover": {
-          "type": "string",
-          "minLength": 1
+          "type": "string"
         },
         "has_manual_approve": {
           "type": "boolean"
@@ -2165,8 +2164,7 @@
           }
         },
         "image_cover_preview_url": {
-          "type": "string",
-          "minLength": 1
+          "type": "string"
         },
         "has_order_with_booking_approval": {
           "type": "boolean"
@@ -2297,7 +2295,7 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "properties": {}
+                    "type": "string"
                   }
                 },
                 "additional_questions": {
@@ -2322,7 +2320,7 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "properties": {}
+                    "type": "string"
                   }
                 },
                 "additional_questions": {
@@ -2347,16 +2345,14 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string",
-              "minLength": 1
+              "type": "string"
             },
             "email": {
               "type": "string",
               "minLength": 1
             },
             "phone": {
-              "type": "string",
-              "minLength": 1
+              "type": "string"
             },
             "organization": {
               "type": "string",
@@ -2460,12 +2456,10 @@
               "type": "object",
               "properties": {
                 "de": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "en": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 }
               },
               "required": [
@@ -2539,8 +2533,7 @@
                 "type": "number"
               },
               "description": {
-                "type": "string",
-                "minLength": 1
+                "type": "string"
               },
               "show_remaining_capacity": {
                 "type": "boolean"
