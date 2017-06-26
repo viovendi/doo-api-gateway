@@ -3905,10 +3905,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "de",
-                "en"
-              ]
+              "required": []
             },
             "zip": {
               "type": "string"
@@ -4000,10 +3997,7 @@
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "de",
-                      "en"
-                    ]
+                    "required": []
                   },
                   "house_num": {
                     "type": "string"
@@ -4042,8 +4036,6 @@
                       "event_ticket_id",
                       "custom_price",
                       "pdf_link",
-                      "name_tag_link",
-                      "passbook_link",
                       "checkin_link"
                     ]
                   },
@@ -4080,20 +4072,7 @@
                 },
                 "required": [
                   "id",
-                  "member_id",
                   "status",
-                  "company_name",
-                  "salutation",
-                  "title",
-                  "first_name",
-                  "last_name",
-                  "email",
-                  "zip",
-                  "street",
-                  "city",
-                  "country",
-                  "house_num",
-                  "ticket",
                   "answers"
                 ]
               }
@@ -4143,7 +4122,6 @@
                   },
                   "required": [
                     "tickets_archive_url",
-                    "nametags_archive_url",
                     "tickets_archive_zipped",
                     "nametags_archive_zipped",
                     "passbook_link"
@@ -4167,9 +4145,7 @@
                 "status",
                 "transaction_fees",
                 "original_tickets",
-                "expected_attachments_link",
-                "invoice_file_url",
-                "cancellation_invoice_link"
+                "expected_attachments_link"
               ]
             },
             "answers_salutation_translations": {
@@ -4205,10 +4181,7 @@
           },
           "required": [
             "id",
-            "member_id",
             "invoice_id",
-            "salutation",
-            "title",
             "first_name",
             "last_name",
             "company_name",
@@ -4219,17 +4192,9 @@
             "country",
             "zip",
             "status",
-            "cancellation_date",
-            "removed_date",
-            "organizer_comment",
             "total_coupon_discount",
-            "regenerate_requested_date",
-            "promotion_code",
-            "access_code",
             "buyer_hash",
-            "booking_approval_date",
             "buyer_uploaded_files_answers",
-            "cancellation_invoice_id",
             "attendees",
             "buyer_answers",
             "payment",
@@ -4275,7 +4240,6 @@
         "contact_center",
         "event",
         "order_details",
-        "cancellation_invoice",
         "invoice_details",
         "_links"
       ]
