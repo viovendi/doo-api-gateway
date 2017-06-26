@@ -2276,25 +2276,13 @@
             "place_id",
             "latitude",
             "longitude",
-            "street_number",
-            "route",
             "city",
             "country",
             "timezone_id",
-            "postcode",
             "administrative_area_level_1",
             "administrative_area_level_2",
-            "administrative_area_level_3",
-            "administrative_area_level_4",
-            "administrative_area_level_5",
             "formatted_address",
-            "timezone_offset",
-            "street_address",
-            "sublocality_level_1",
-            "sublocality_level_2",
-            "sublocality_level_3",
-            "sublocality_level_4",
-            "sublocality_level_5"
+            "timezone_offset"
           ]
         },
         "questions": {
@@ -2345,7 +2333,6 @@
                 }
               },
               "required": [
-                "id",
                 "default_questions",
                 "additional_questions"
               ]
@@ -2464,8 +2451,7 @@
               "type": "string",
               "minLength": 1
             }
-          },
-          "required": ["min", "max"]
+          }
         },
         "event_settings": {
           "type": "object",
@@ -2535,8 +2521,7 @@
               "ticket_price",
               "ticket_fees",
               "max_available_amount",
-              "min_available_amount",
-              "start_date"
+              "min_available_amount"
             ],
             "properties": {
               "id": {
@@ -2660,14 +2645,12 @@
         "contact_detail_id",
         "location_id",
         "title",
-        "description",
         "venue_address",
         "start_date",
         "end_date",
         "created_date",
         "update_date",
         "draft_date",
-        "live_date",
         "is_deleted",
         "short_name",
         "type",
@@ -2690,7 +2673,6 @@
         "is_publishable",
         "image_preview_url",
         "image_id",
-        "image_cover_id",
         "total_revenue",
         "demo_screen",
         "image_cover_preview_url",
@@ -2707,16 +2689,7 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links",
-        "vat_option_text",
-        "email_attachments",
-        "email_attachment_id",
-        "short_description",
-        "organizer_name",
-        "venue_name",
-        "cancelled_date",
-        "deletion_date",
-        "comment"
+        "_links"
       ]
     },
     "QrcodeGetDetailsResponse": {
