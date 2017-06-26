@@ -3832,10 +3832,29 @@
                   "organizer_price": {
                     "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "price",
+                  "vat",
+                  "vat_percent",
+                  "organizer_price"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "id",
+            "title",
+            "start_date",
+            "end_date",
+            "event_type",
+            "vat_option",
+            "booking_approval",
+            "status",
+            "ticket_categories"
+          ]
         },
         "order_details": {
           "type": "object",
@@ -3885,7 +3904,11 @@
                 "en": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "de",
+                "en"
+              ]
             },
             "zip": {
               "type": "string"
@@ -3976,7 +3999,11 @@
                       "en": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "required": [
+                      "de",
+                      "en"
+                    ]
                   },
                   "house_num": {
                     "type": "string"
@@ -4008,7 +4035,17 @@
                       "checkin_link": {
                         "type": "string"
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "status",
+                      "event_ticket_id",
+                      "custom_price",
+                      "pdf_link",
+                      "name_tag_link",
+                      "passbook_link",
+                      "checkin_link"
+                    ]
                   },
                   "answers": {
                     "type": "array",
@@ -4030,10 +4067,35 @@
                         "display_type": {
                           "type": "string"
                         }
-                      }
+                      },
+                      "required": [
+                        "attendee_id",
+                        "id",
+                        "answer",
+                        "question",
+                        "display_type"
+                      ]
                     }
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "member_id",
+                  "status",
+                  "company_name",
+                  "salutation",
+                  "title",
+                  "first_name",
+                  "last_name",
+                  "email",
+                  "zip",
+                  "street",
+                  "city",
+                  "country",
+                  "house_num",
+                  "ticket",
+                  "answers"
+                ]
               }
             },
             "buyer_answers": {
@@ -4078,7 +4140,14 @@
                     "passbook_link": {
                       "type": "array"
                     }
-                  }
+                  },
+                  "required": [
+                    "tickets_archive_url",
+                    "nametags_archive_url",
+                    "tickets_archive_zipped",
+                    "nametags_archive_zipped",
+                    "passbook_link"
+                  ]
                 },
                 "expected_attachments_link": {
                   "type": "array"
@@ -4089,7 +4158,19 @@
                 "cancellation_invoice_link": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "amount",
+                "method",
+                "payment_date",
+                "booking_date",
+                "status",
+                "transaction_fees",
+                "original_tickets",
+                "expected_attachments_link",
+                "invoice_file_url",
+                "cancellation_invoice_link"
+              ]
             },
             "answers_salutation_translations": {
               "type": "object",
@@ -4100,7 +4181,11 @@
                 "2": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "1",
+                "2"
+              ]
             },
             "answer_title_translations": {
               "type": "object",
@@ -4111,9 +4196,46 @@
                 "2": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "1",
+                "2"
+              ]
             }
-          }
+          },
+          "required": [
+            "id",
+            "member_id",
+            "invoice_id",
+            "salutation",
+            "title",
+            "first_name",
+            "last_name",
+            "company_name",
+            "email",
+            "street",
+            "house_num",
+            "city",
+            "country",
+            "zip",
+            "status",
+            "cancellation_date",
+            "removed_date",
+            "organizer_comment",
+            "total_coupon_discount",
+            "regenerate_requested_date",
+            "promotion_code",
+            "access_code",
+            "buyer_hash",
+            "booking_approval_date",
+            "buyer_uploaded_files_answers",
+            "cancellation_invoice_id",
+            "attendees",
+            "buyer_answers",
+            "payment",
+            "answers_salutation_translations",
+            "answer_title_translations"
+          ]
         },
         "cancellation_invoice": {
           "type": "string"
@@ -4124,7 +4246,10 @@
             "use_company_name": {
               "type": "boolean"
             }
-          }
+          },
+          "required": [
+            "use_company_name"
+          ]
         },
         "_links": {
           "type": "object",
@@ -4135,11 +4260,25 @@
                 "href": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
-      }
+      },
+      "required": [
+        "contact_center",
+        "event",
+        "order_details",
+        "cancellation_invoice",
+        "invoice_details",
+        "_links"
+      ]
     },
     "OauthZapierPostResponse": {
       "type": "object",
