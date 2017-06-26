@@ -2005,7 +2005,8 @@
           "type": "number"
         },
         "title": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "organizer_name": {
           "type": "string",
@@ -2473,10 +2474,12 @@
               "type": "object",
               "properties": {
                 "de": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "en": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
