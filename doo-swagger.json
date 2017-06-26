@@ -3929,8 +3929,7 @@
                   "type": "string",
                   "minLength": 1
                 }
-              },
-              "required": []
+              }
             },
             "zip": {
               "type": "string",
@@ -4046,8 +4045,7 @@
                         "type": "string",
                         "minLength": 1
                       }
-                    },
-                    "required": []
+                    }
                   },
                   "house_num": {
                     "type": "string",
