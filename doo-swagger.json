@@ -3786,28 +3786,35 @@
           "type": "object",
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "title": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "start_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "end_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "event_type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "vat_option": {
               "type": "integer"
             },
             "booking_approval": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "ticket_categories": {
               "type": "array",
@@ -3818,7 +3825,8 @@
                     "type": "integer"
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "price": {
                     "type": "integer"
@@ -3860,91 +3868,116 @@
           "type": "object",
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "member_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "invoice_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "salutation": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "title": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "first_name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "last_name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "company_name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "street": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "house_num": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "country": {
               "type": "object",
               "properties": {
                 "de": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "en": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": []
             },
             "zip": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "cancellation_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "removed_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "organizer_comment": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "total_coupon_discount": {
               "type": "integer"
             },
             "regenerate_requested_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "promotion_code": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "access_code": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "buyer_hash": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "booking_approval_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "buyer_uploaded_files_answers": {
               "type": "boolean"
             },
             "cancellation_invoice_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "attendees": {
               "type": "array",
@@ -3952,64 +3985,81 @@
                 "type": "object",
                 "properties": {
                   "id": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "member_id": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "status": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "company_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "salutation": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "title": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "zip": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "street": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "city": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "country": {
                     "type": "object",
                     "properties": {
                       "de": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "en": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
                     },
                     "required": []
                   },
                   "house_num": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "ticket": {
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "status": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "event_ticket_id": {
                         "type": "integer"
@@ -4018,16 +4068,20 @@
                         "type": "boolean"
                       },
                       "pdf_link": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "name_tag_link": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "passbook_link": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "checkin_link": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
                     },
                     "required": [
@@ -4045,19 +4099,23 @@
                       "type": "object",
                       "properties": {
                         "attendee_id": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "id": {
                           "type": "integer"
                         },
                         "answer": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "question": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "display_type": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         }
                       },
                       "required": [
@@ -4084,19 +4142,24 @@
               "type": "object",
               "properties": {
                 "amount": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "method": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "payment_date": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "booking_date": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "status": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "transaction_fees": {
                   "type": "object"
@@ -4105,10 +4168,12 @@
                   "type": "object",
                   "properties": {
                     "tickets_archive_url": {
-                      "type": "string"
+                      "type": "string",
+                      "minLength": 1
                     },
                     "nametags_archive_url": {
-                      "type": "string"
+                      "type": "string",
+                      "minLength": 1
                     },
                     "tickets_archive_zipped": {
                       "type": "boolean"
@@ -4131,10 +4196,12 @@
                   "type": "array"
                 },
                 "invoice_file_url": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "cancellation_invoice_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
@@ -4152,10 +4219,12 @@
               "type": "object",
               "properties": {
                 "1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
@@ -4167,10 +4236,12 @@
               "type": "object",
               "properties": {
                 "1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
@@ -4203,7 +4274,8 @@
           ]
         },
         "cancellation_invoice": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "invoice_details": {
           "type": "object",
@@ -4223,7 +4295,8 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
