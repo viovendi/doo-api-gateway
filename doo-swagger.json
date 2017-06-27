@@ -2027,8 +2027,6 @@
                       "invoice_id",
                       "first_name",
                       "last_name",
-                      "cancellation_date",
-                      "removed_date",
                       "active_date",
                       "order_amount",
                       "payment"
