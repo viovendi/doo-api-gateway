@@ -950,6 +950,7 @@
     "/oauth/zapier": {
       "post": {
         "tags": ["oauth"],
+        "description": "PROD - OAuth endpoint for Zapier",
         "consumes": [
           "application/json"
         ],
@@ -2747,13 +2748,15 @@
       ],
       "properties": {
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "response_status": {
           "type": "integer"
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "string"
@@ -3205,7 +3208,8 @@
       ],
       "properties": {
         "client_secret": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "code": {
           "type": "string"
@@ -3214,11 +3218,13 @@
           "type": "string"
         },
         "grant_type": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "client_id": {
           "type": "string",
-          "default": "zapier"
+          "default": "zapier",
+          "minLength": 1
         },
         "redirect_uri": {
           "type": "string",
@@ -4291,10 +4297,12 @@
       ],
       "properties": {
         "access_token": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "refresh_token": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       }
     },
