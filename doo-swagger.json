@@ -1796,31 +1796,29 @@
   "definitions": {
     "OauthPostResponse": {
       "type": "object",
-      "required": [
-        "_links",
-        "data",
-        "developer_message",
-        "response_status",
-        "user_message"
-      ],
+      "description": "Response model for `POST /oauth`",
       "properties": {
         "response_status": {
           "type": "integer"
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "object",
           "properties": {
             "access_token": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "refresh_token": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
           },
           "required": [
@@ -1835,7 +1833,8 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
@@ -1848,7 +1847,13 @@
           ]
         }
       },
-      "description": "Response model for `POST /oauth`"
+      "required": [
+        "_links",
+        "data",
+        "developer_message",
+        "response_status",
+        "user_message"
+      ]
     },
     "EventsIdOrdersGetResponse": {
       "type": "object",
@@ -1860,27 +1865,44 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "first": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "last": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self",
+            "first",
+            "last"
+          ]
         },
         "_embedded": {
           "type": "object",
@@ -1894,81 +1916,135 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "title": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "start_date": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "end_date": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "event_type": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "start_date",
+                      "end_date",
+                      "event_type"
+                    ]
                   },
                   "order": {
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "event_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "status": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "invoice_id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "first_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "last_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "cancellation_date": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "removed_date": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "active_date": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "order_amount": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "payment": {
                         "type": "object",
                         "properties": {
                           "status": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           },
                           "amount": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           },
                           "method": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           },
                           "payment_date": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           },
                           "booking_date": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           }
-                        }
+                        },
+                        "required": [
+                          "status",
+                          "amount",
+                          "method",
+                          "payment_date",
+                          "booking_date"
+                        ]
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "event_name",
+                      "status",
+                      "invoice_id",
+                      "first_name",
+                      "last_name",
+                      "cancellation_date",
+                      "removed_date",
+                      "active_date",
+                      "order_amount",
+                      "payment"
+                    ]
                   }
-                }
+                },
+                "required": [
+                  "event",
+                  "order"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "orders"
+          ]
         },
         "page_count": {
           "type": "integer"
@@ -1982,7 +2058,15 @@
         "page": {
           "type": "integer"
         }
-      }
+      },
+      "required": [
+        "_links",
+        "_embedded",
+        "page_count",
+        "page_size",
+        "total_items",
+        "page"
+      ]
     },
     "EventsIdEditGetResponse": {
       "description": "",
