@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.0.7425",
     "title": "doo API Documentation",
     "description": "doo API Documentation"
   },
@@ -25,6 +25,10 @@
       "description": "Everything about Organizers"
     },
     {
+      "name": "contacts",
+      "description": "contact to organizations"
+    },
+    {
       "name": "qrcodes",
       "description": "Everything about QRCodes"
     }
@@ -35,7 +39,9 @@
   "paths": {
     "/events": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get all events for specific organizer",
         "consumes": [
           "application/json"
@@ -129,7 +135,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -179,7 +187,9 @@
     },
     "/events/{eventId}": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -257,7 +267,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -310,7 +322,9 @@
     },
     "/events/{eventId}/attendees": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -388,7 +402,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -438,7 +454,9 @@
     },
     "/events/{eventId}/details": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get specific event with additional details",
         "consumes": [
           "application/json"
@@ -517,7 +535,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -567,7 +587,9 @@
     },
     "/events/{eventId}/orders": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get all orders for specific event",
         "consumes": [
           "application/json"
@@ -646,7 +668,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -696,7 +720,9 @@
     },
     "/events/{eventId}/edit": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "PROD - Get event information for editing",
         "consumes": [
           "application/json"
@@ -775,7 +801,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -825,7 +853,9 @@
     },
     "/oauth": {
       "post": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "description": "Use this endpoint to authorize as a user in our system and get `access_token` and `refresh_token`.",
         "consumes": [
           "application/json"
@@ -899,7 +929,9 @@
         }
       },
       "options": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -949,7 +981,9 @@
     },
     "/oauth/zapier": {
       "post": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "description": "PROD - OAuth endpoint for Zapier",
         "consumes": [
           "application/json"
@@ -1041,7 +1075,9 @@
         }
       },
       "options": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1091,7 +1127,9 @@
     },
     "/orders/{orderId}": {
       "get": {
-        "tags": ["orders"],
+        "tags": [
+          "orders"
+        ],
         "description": "PROD - Get data for specific order",
         "consumes": [
           "application/json"
@@ -1170,7 +1208,9 @@
         }
       },
       "options": {
-        "tags": ["orders"],
+        "tags": [
+          "orders"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1220,7 +1260,9 @@
     },
     "/organizers/current": {
       "get": {
-        "tags": ["organizers"],
+        "tags": [
+          "organizers"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1285,7 +1327,135 @@
         }
       },
       "options": {
-        "tags": ["organizers"],
+        "tags": [
+          "organizers"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/organizers/:organizer_id/contacts/upload": {
+      "post": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Upload contacts CSV files",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "contacts_file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "contacts_file_encoding",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/UploadContactsPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/current",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "organizers"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1335,7 +1505,9 @@
     },
     "/qrcodes/{hash}": {
       "get": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Get information about QR code",
         "consumes": [
           "application/json"
@@ -1443,7 +1615,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1493,7 +1667,9 @@
     },
     "/qrcodes/{hash}/checkin": {
       "post": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Check in specified ticket",
         "consumes": [
           "application/json"
@@ -1601,7 +1777,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1651,7 +1829,9 @@
     },
     "/qrcodes/{hash}/reset": {
       "post": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Uncheck selected ticket",
         "consumes": [
           "application/json"
@@ -1737,7 +1917,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -4388,36 +4570,20 @@
         }
       }
     },
+    "UploadContactsPostResponse": {
+      "allOf" : [
+        {"$ref": "_hal.json:#/definitions/LinkSchemaSingle"},
+        {"$ref": "_hal.json:#/definitions/Response200Schema"},
+        {"$ref": "_contact.json#/definitions/OrganizerContactsSchema"}
+      ]
+    },
     "EventsIdAttendeesGetResponse": {
       "type": "object",
       "properties": {
         "_links": {
           "type": "object",
           "properties": {
-            "first": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              }
-            },
-            "last": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              }
-            },
-            "self": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              }
-            }
+            "$ref": "_hal.json#/definitions/LinkSchemaComplex"
           }
         },
         "_embedded": {

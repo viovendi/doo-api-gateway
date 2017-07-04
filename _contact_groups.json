@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "OrganizerContactGroupsSingleSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "organizer_id": {
+          "type": "integer"
+        },
+        "event_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": {
+            "enum": [
+              "event_auto_created",
+              "organizer_created"
+            ]
+          }
+        },
+        "status": {
+          "type": {
+            "enum": [
+              "active",
+              "deleted"
+            ]
+          }
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "removed_date": {
+          "type": "string"
+        },
+        "updated_date": {
+          "type": "string"
+        },
+        "contacts_count": {
+          "type": "integer"
+        },
+        "event_start_date": {
+          "type": "string"
+        },
+        "event_invitation_subscribers_count": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
