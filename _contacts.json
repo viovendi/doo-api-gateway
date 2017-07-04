@@ -19,7 +19,7 @@
         "contact_groups": {
           "type": "array",
           "items": {
-            "$ref": "_contact_groups.json#/definitions/OrganizerContactGroupSingleSchema"
+            "$ref": "_contact_groups.json#/definitions/OrganizerContactGroupsSingleSchema"
           }
         }
       }
