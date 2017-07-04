@@ -4572,9 +4572,9 @@
     },
     "UploadContactsPostResponse": {
       "allOf" : [
-        {"$ref": "_hal.json:#/definitions/LinkSchemaSingle"},
-        {"$ref": "_hal.json:#/definitions/Response200Schema"},
-        {"$ref": "_contact.json#/definitions/OrganizerContactsSchema"}
+        {"$ref": "_hal.json#/definitions/LinkSchemaSingle"},
+        {"$ref": "_hal.json#/definitions/Response200Schema"},
+        {"$ref": "_contacts.json#/definitions/OrganizerContactsSchema"}
       ]
     },
     "EventsIdAttendeesGetResponse": {
