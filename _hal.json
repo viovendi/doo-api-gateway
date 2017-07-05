@@ -1,11 +1,25 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.7425",
+    "title": "doo API Documentation",
+    "description": "doo API Documentation"
+  },
+  "host": "integration.doo.net",
+  "basePath": "/v1",
+  "paths": {},
   "definitions": {
-    "Response200Schema": {
+    "ResponseSchema": {
       "type": "object",
       "properties": {
         "response_status": {
-          "type": "integer"
+          "type": {
+            "enum": [
+              200,
+              401,
+              403
+            ]
+          }
         },
         "developer_message": {
           "type": "string"
@@ -15,47 +29,75 @@
         }
       }
     },
-    "LinkSchemaSingle": {
-      "self": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "object",
-            "properties": {
-              "href": {
-                "type": "string"
-              }
+    "LinkSchema": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
             }
           }
         }
       }
     },
+    "LinkSchemaSingle": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "$ref": "#/definitions/LinkSchema"
+        }
+      }
+    },
     "LinkSchemaComplex": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/LinkSchemaSingle"
-        },
-        {
-          "properties": {
-            "last": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              }
+      "type": "object",
+      "properties": {
+        "_links": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/LinkSchema"
             },
-            "first": {
-              "type": "object",
+            {
               "properties": {
-                "href": {
-                  "type": "string"
+                "last": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "first": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
-          }
+          ]
         }
-      ]
+      }
+    },
+    "PageSchema": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "page_count": {
+          "type": "integer"
+        },
+        "page_size": {
+          "type": "integer"
+        },
+        "total_items": {
+          "type": "integer"
+        }
+      }
     }
   }
 }

@@ -4571,80 +4571,78 @@
       }
     },
     "UploadContactsPostResponse": {
-      "allOf" : [
-        {"$ref": "_hal.json#/definitions/LinkSchemaSingle"},
-        {"$ref": "_hal.json#/definitions/Response200Schema"},
-        {"$ref": "_contacts.json#/definitions/OrganizerContactsSchema"}
+      "allOf": [
+        {
+          "$ref": "_hal.json#/definitions/LinkSchemaSingle"
+        },
+        {
+          "$ref": "_hal.json#/definitions/Response200Schema"
+        },
+        {
+          "$ref": "_contacts.json#/definitions/OrganizerContactsSchema"
+        }
       ]
     },
     "EventsIdAttendeesGetResponse": {
-      "type": "object",
-      "properties": {
-        "_links": {
-          "type": "object",
-          "properties": {
-            "$ref": "_hal.json#/definitions/LinkSchemaComplex"
-          }
+      "allOf": [
+        {
+          "$ref": "_hal.json#/definitions/LinkSchemaComplex"
         },
-        "_embedded": {
+        {
           "type": "object",
           "properties": {
-            "attendees": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "attendee_first_name": {
-                    "type": "string"
-                  },
-                  "attendee_id": {
-                    "type": "string"
-                  },
-                  "attendee_last_name": {
-                    "type": "string"
-                  },
-                  "attendee_status": {
-                    "type": "string"
-                  },
-                  "buyer_first_name": {
-                    "type": "string"
-                  },
-                  "buyer_last_name": {
-                    "type": "string"
-                  },
-                  "category_id": {
-                    "type": "integer"
-                  },
-                  "category_name": {
-                    "type": "string"
-                  },
-                  "is_checked": {
-                    "type": "boolean"
-                  },
-                  "order_id": {
-                    "type": "integer"
-                  },
-                  "ticket_hash": {
-                    "type": "string"
+            "_embedded": {
+              "type": "object",
+              "properties": {
+                "attendees": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "attendee_first_name": {
+                        "type": "string"
+                      },
+                      "attendee_id": {
+                        "type": "string"
+                      },
+                      "attendee_last_name": {
+                        "type": "string"
+                      },
+                      "attendee_status": {
+                        "type": "string"
+                      },
+                      "buyer_first_name": {
+                        "type": "string"
+                      },
+                      "buyer_last_name": {
+                        "type": "string"
+                      },
+                      "category_id": {
+                        "type": "integer"
+                      },
+                      "category_name": {
+                        "type": "string"
+                      },
+                      "is_checked": {
+                        "type": "boolean"
+                      },
+                      "order_id": {
+                        "type": "integer"
+                      },
+                      "ticket_hash": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
             }
           }
         },
-        "page": {
-          "type": "integer"
-        },
-        "page_count": {
-          "type": "integer"
-        },
-        "page_size": {
-          "type": "integer"
-        },
-        "total_items": {
-          "type": "integer"
+        {
+          "$ref": "_hal.json#/definitions/PageSchema"
         }
-      }
+      ]
     },
     "OrganizersCurrentGetResponse": {
       "description": "",
