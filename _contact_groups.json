@@ -17,20 +17,16 @@
           "type": "string"
         },
         "type": {
-          "type": {
             "enum": [
               "event_auto_created",
               "organizer_created"
             ]
-          }
         },
         "status": {
-          "type": {
             "enum": [
               "active",
               "deleted"
             ]
-          }
         },
         "created_date": {
           "type": "string"

@@ -13,13 +13,11 @@
       "type": "object",
       "properties": {
         "response_status": {
-          "type": {
-            "enum": [
-              200,
-              401,
-              403
-            ]
-          }
+          "enum": [
+            200,
+            401,
+            403
+          ]
         },
         "developer_message": {
           "type": "string"
