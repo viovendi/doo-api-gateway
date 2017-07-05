@@ -1377,7 +1377,7 @@
         }
       }
     },
-    "/organizers/:organizer_id/contacts/upload": {
+    "/organizers/{organizer_id}/contacts/upload": {
       "post": {
         "tags": [
           "contacts"
@@ -1392,16 +1392,12 @@
         ],
         "parameters": [
           {
-            "name": "contacts_file",
-            "in": "formData",
+            "name": "organizer_id",
+            "in": "path",
             "required": true,
-            "type": "file"
-          },
-          {
-            "name": "contacts_file_encoding",
-            "in": "formData",
-            "required": false,
-            "type": "string"
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
           },
           {
             "name": "Content-Type",
@@ -1418,6 +1414,18 @@
           {
             "name": "x-api-key",
             "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contacts_file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "contacts_file_encoding",
+            "in": "formData",
             "required": false,
             "type": "string"
           }
@@ -1446,7 +1454,7 @@
               "statusCode": "200"
             }
           },
-          "uri": "https://${stageVariables.ApiUrl}/organizers/current",
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contacts/upload",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
           "type": "http_proxy"
@@ -1454,7 +1462,7 @@
       },
       "options": {
         "tags": [
-          "organizers"
+          "contacts"
         ],
         "consumes": [
           "application/json"
