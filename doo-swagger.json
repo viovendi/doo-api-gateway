@@ -4576,7 +4576,7 @@
           "$ref": "_hal.json#/definitions/LinkSchemaSingle"
         },
         {
-          "$ref": "_hal.json#/definitions/Response200Schema"
+          "$ref": "_hal.json#/definitions/ResponseSchema"
         },
         {
           "$ref": "_contacts.json#/definitions/OrganizerContactsSchema"
