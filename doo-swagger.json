@@ -1796,7 +1796,7 @@
   "definitions": {
     "OauthPostResponse": {
       "type": "object",
-      "description": "Response model for `POST /oauth`",
+      "description": "DONE - Response model for `POST /oauth`",
       "properties": {
         "response_status": {
           "type": "integer"
@@ -1857,6 +1857,7 @@
     },
     "EventsIdOrdersGetResponse": {
       "type": "object",
+      "description": "DONE",
       "properties": {
         "_links": {
           "type": "object",
@@ -2067,8 +2068,8 @@
       ]
     },
     "EventsIdEditGetResponse": {
-      "description": "",
       "type": "object",
+      "description": "DONE",
       "properties": {
         "id": {
           "type": "number"
@@ -2823,6 +2824,7 @@
     },
     "CommonStatusResponse": {
       "type": "object",
+      "description": "DONE",
       "required": [
         "developer_message",
         "response_status",
@@ -3283,6 +3285,7 @@
     },
     "OauthZapierPostRequest": {
       "type": "object",
+      "description": "DONE",
       "required": [
         "client_id",
         "client_secret",
@@ -3834,6 +3837,7 @@
     },
     "OrdersIdGetResponse": {
       "type": "object",
+      "description": "DONE",
       "properties": {
         "contact_center": {
           "type": "boolean"
@@ -4373,6 +4377,7 @@
     },
     "OauthZapierPostResponse": {
       "type": "object",
+      "description": "DONE",
       "required": [
         "access_token",
         "refresh_token"
