@@ -2713,6 +2713,11 @@
           "required": [
             "self"
           ]
+        },
+        "external_user_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User ID in the external system (used in webhooks)"
         }
       },
       "required": [
