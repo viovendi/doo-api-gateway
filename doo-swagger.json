@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.0.6612",
     "title": "doo API Documentation",
     "description": "doo API Documentation"
   },
@@ -11,6 +11,10 @@
     {
       "name": "events",
       "description": "Everything about Events"
+    },
+    {
+      "name": "event_order",
+      "description": "Public event order site"
     },
     {
       "name": "oauth",
@@ -35,7 +39,9 @@
   "paths": {
     "/events": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get all events for specific organizer",
         "consumes": [
           "application/json"
@@ -129,7 +135,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -179,7 +187,9 @@
     },
     "/events/{eventId}": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events", "event_order"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -257,7 +267,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -310,7 +322,9 @@
     },
     "/events/{eventId}/attendees": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -388,7 +402,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -438,7 +454,9 @@
     },
     "/events/{eventId}/details": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get specific event with additional details",
         "consumes": [
           "application/json"
@@ -517,7 +535,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -567,7 +587,9 @@
     },
     "/events/{eventId}/orders": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "Get all orders for specific event",
         "consumes": [
           "application/json"
@@ -646,7 +668,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -696,7 +720,9 @@
     },
     "/events/{eventId}/edit": {
       "get": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "description": "PROD - Get event information for editing",
         "consumes": [
           "application/json"
@@ -775,7 +801,9 @@
         }
       },
       "options": {
-        "tags": ["events"],
+        "tags": [
+          "events"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -825,7 +853,9 @@
     },
     "/oauth": {
       "post": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "description": "Use this endpoint to authorize as a user in our system and get `access_token` and `refresh_token`.",
         "consumes": [
           "application/json"
@@ -899,7 +929,9 @@
         }
       },
       "options": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -949,7 +981,9 @@
     },
     "/oauth/zapier": {
       "post": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "description": "PROD - OAuth endpoint for Zapier",
         "consumes": [
           "application/json"
@@ -1041,7 +1075,9 @@
         }
       },
       "options": {
-        "tags": ["oauth"],
+        "tags": [
+          "oauth"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1091,7 +1127,9 @@
     },
     "/orders/{orderId}": {
       "get": {
-        "tags": ["orders"],
+        "tags": [
+          "orders"
+        ],
         "description": "PROD - Get data for specific order",
         "consumes": [
           "application/json"
@@ -1170,7 +1208,9 @@
         }
       },
       "options": {
-        "tags": ["orders"],
+        "tags": [
+          "orders"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1220,7 +1260,9 @@
     },
     "/organizers/current": {
       "get": {
-        "tags": ["organizers"],
+        "tags": [
+          "organizers"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1285,7 +1327,9 @@
         }
       },
       "options": {
-        "tags": ["organizers"],
+        "tags": [
+          "organizers"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1335,7 +1379,9 @@
     },
     "/qrcodes/{hash}": {
       "get": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Get information about QR code",
         "consumes": [
           "application/json"
@@ -1443,7 +1489,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1493,7 +1541,9 @@
     },
     "/qrcodes/{hash}/checkin": {
       "post": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Check in specified ticket",
         "consumes": [
           "application/json"
@@ -1601,7 +1651,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -1651,7 +1703,9 @@
     },
     "/qrcodes/{hash}/reset": {
       "post": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "description": "Uncheck selected ticket",
         "consumes": [
           "application/json"
@@ -1737,7 +1791,9 @@
         }
       },
       "options": {
-        "tags": ["qrcodes"],
+        "tags": [
+          "qrcodes"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -2881,28 +2937,40 @@
           "type": "string"
         },
         "start_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "end_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "created_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "update_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "draft_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "live_date": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "is_deleted": {
           "type": "string"
         },
-        "deletion_date": {},
-        "cancelled_date": {},
+        "deletion_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cancelled_date": {
+          "type": "string",
+          "format": "date-time"
+        },
         "short_name": {
           "type": "string"
         },
@@ -2950,222 +3018,19 @@
           "type": "boolean"
         },
         "address": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "number"
-            },
-            "place_id": {
-              "type": "string"
-            },
-            "latitude": {
-              "type": "string"
-            },
-            "longitude": {
-              "type": "string"
-            },
-            "street_address": {},
-            "street_number": {},
-            "route": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "timezone_id": {
-              "type": "string"
-            },
-            "postcode": {
-              "type": "string"
-            },
-            "administrative_area_level_1": {
-              "type": "string"
-            },
-            "administrative_area_level_2": {
-              "type": "string"
-            },
-            "administrative_area_level_3": {
-              "type": "string"
-            },
-            "administrative_area_level_4": {
-              "type": "string"
-            },
-            "administrative_area_level_5": {
-              "type": "string"
-            },
-            "sublocality_level_1": {
-              "type": "string"
-            },
-            "sublocality_level_2": {
-              "type": "string"
-            },
-            "sublocality_level_3": {
-              "type": "string"
-            },
-            "sublocality_level_4": {
-              "type": "string"
-            },
-            "sublocality_level_5": {
-              "type": "string"
-            },
-            "formatted_address": {
-              "type": "string"
-            },
-            "timezone_offset": {
-              "type": "number"
-            }
-          }
+          "$ref": "#/definitions/EventAddress"
         },
         "questions": {
-          "type": "object",
-          "properties": {
-            "buyer_questions": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "default_questions": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "additional_questions": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "question_id": {
-                        "type": "number"
-                      },
-                      "answer_id": {},
-                      "answer": {},
-                      "required": {
-                        "type": "boolean"
-                      },
-                      "label": {
-                        "type": "string"
-                      },
-                      "field_type": {
-                        "type": "string"
-                      },
-                      "field_options": {
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "order": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "attendee_questions": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "default_questions": {
-                  "type": "array",
-                  "items": {
-                    "properties": {}
-                  }
-                },
-                "additional_questions": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "id": {
-                        "type": "number"
-                      },
-                      "question_id": {
-                        "type": "number"
-                      },
-                      "answer_id": {},
-                      "answer": {},
-                      "required": {
-                        "type": "boolean"
-                      },
-                      "label": {
-                        "type": "string"
-                      },
-                      "field_type": {
-                        "type": "string"
-                      },
-                      "field_options": {
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "order": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          "$ref": "#/definitions/EventQuestions"
         },
         "contact": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "phone": {
-              "type": "string"
-            },
-            "organization": {
-              "type": "string"
-            },
-            "organizer_id": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/EventContacts"
         },
         "terms": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/EventTerms"
         },
         "event_attributes": {
-          "type": "object",
-          "properties": {
-            "attributes": {
-              "type": "array",
-              "items": {
-                "properties": {}
-              }
-            },
-            "templates": {
-              "type": "array",
-              "items": {
-                "properties": {}
-              }
-            }
-          }
+          "$ref": "#/definitions/EventAttributes"
         },
         "ticket_limitation": {
           "type": "object",
@@ -3175,90 +3040,13 @@
           }
         },
         "event_settings": {
-          "type": "object",
-          "properties": {
-            "custom_checkout_text": {
-              "type": "object",
-              "properties": {
-                "de": {
-                  "type": "string"
-                },
-                "en": {
-                  "type": "string"
-                }
-              }
-            },
-            "has_white_labels": {
-              "type": "number"
-            },
-            "payment_bank_transfer": {
-              "type": "number"
-            },
-            "payment_credit_card": {
-              "type": "number"
-            },
-            "payment_paypal": {
-              "type": "number"
-            }
-          }
+          "$ref": "#/definitions/EventSettings"
         },
         "amount": {
           "type": "number"
         },
         "ticket_categories": {
-          "type": "array",
-          "items": {
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "show_remaining_capacity": {
-                "type": "boolean"
-              },
-              "min": {
-                "type": "string"
-              },
-              "vat": {
-                "type": "number"
-              },
-              "vat_percent": {
-                "type": "number"
-              },
-              "start_date": {
-                "type": "string"
-              },
-              "display_order": {
-                "type": "string"
-              },
-              "available_amount": {
-                "type": "number"
-              },
-              "is_featured": {
-                "type": "boolean"
-              },
-              "is_ended": {
-                "type": "boolean"
-              },
-              "ticket_price": {
-                "type": "number"
-              },
-              "ticket_fees": {
-                "type": "number"
-              },
-              "max_available_amount": {
-                "type": "number"
-              },
-              "min_available_amount": {
-                "type": "number"
-              }
-            }
-          }
+          "$ref": "#/definitions/EventTicketCategories"
         },
         "participants_count": {
           "type": "number"
@@ -4965,6 +4753,340 @@
               }
             }
           }
+        }
+      }
+    },
+    "EventAddress": {
+      "description": "Event address",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "place_id": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "street_address": {},
+        "street_number": {},
+        "route": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "timezone_id": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "administrative_area_level_1": {
+          "type": "string"
+        },
+        "administrative_area_level_2": {
+          "type": "string"
+        },
+        "administrative_area_level_3": {
+          "type": "string"
+        },
+        "administrative_area_level_4": {
+          "type": "string"
+        },
+        "administrative_area_level_5": {
+          "type": "string"
+        },
+        "sublocality_level_1": {
+          "type": "string"
+        },
+        "sublocality_level_2": {
+          "type": "string"
+        },
+        "sublocality_level_3": {
+          "type": "string"
+        },
+        "sublocality_level_4": {
+          "type": "string"
+        },
+        "sublocality_level_5": {
+          "type": "string"
+        },
+        "formatted_address": {
+          "type": "string"
+        },
+        "timezone_offset": {
+          "type": "number"
+        }
+      }
+    },
+    "EventQuestions": {
+      "type": "object",
+      "properties": {
+        "buyer_questions": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "default_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "additional_questions": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "question_id": {
+                    "type": "number"
+                  },
+                  "answer_id": {},
+                  "answer": {},
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "field_type": {
+                    "type": "string"
+                  },
+                  "field_options": {
+                    "type": "object",
+                    "properties": {
+                      "size": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "order": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "attendee_questions": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "default_questions": {
+              "type": "array",
+              "items": {
+                "properties": {}
+              }
+            },
+            "additional_questions": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "question_id": {
+                    "type": "number"
+                  },
+                  "answer_id": {},
+                  "answer": {},
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "field_type": {
+                    "type": "string"
+                  },
+                  "field_options": {
+                    "type": "object",
+                    "properties": {
+                      "size": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "order": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "EventContacts": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "organizer_id": {
+          "type": "string"
+        }
+      }
+    },
+    "EventTerms": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "EventSettings": {
+      "type": "object",
+      "properties": {
+        "custom_checkout_text": {
+          "type": "object",
+          "properties": {
+            "de": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        },
+        "has_white_labels": {
+          "type": "number"
+        },
+        "payment_bank_transfer": {
+          "type": "number"
+        },
+        "payment_credit_card": {
+          "type": "number"
+        },
+        "payment_paypal": {
+          "type": "number"
+        }
+      }
+    },
+    "EventAttributes": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "templates": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        }
+      }
+    },
+    "EventTicketCategories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EventTicketCategoriesSingle"
+      }
+    },
+    "EventTicketCategoriesSingle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "show_remaining_capacity": {
+          "type": "boolean"
+        },
+        "min": {
+          "type": "string"
+        },
+        "vat": {
+          "type": "number"
+        },
+        "vat_percent": {
+          "type": "number"
+        },
+        "start_date": {
+          "type": "string"
+        },
+        "display_order": {
+          "type": "string"
+        },
+        "available_amount": {
+          "type": "number"
+        },
+        "is_featured": {
+          "type": "boolean"
+        },
+        "is_ended": {
+          "type": "boolean"
+        },
+        "ticket_price": {
+          "type": "number"
+        },
+        "ticket_fees": {
+          "type": "number"
+        },
+        "max_available_amount": {
+          "type": "number"
+        },
+        "min_available_amount": {
+          "type": "number"
+        },
+        "billing": {
+          "$ref": "#/definitions/EventTicketCategoriesBilling"
+        }
+      }
+    },
+    "EventTicketCategoriesBilling": {
+      "type": "object",
+      "properties": {
+        "display": {
+          "$ref": "#/definitions/EventTicketCategoriesBillingProperties"
+        },
+        "charge": {
+          "$ref": "#/definitions/EventTicketCategoriesBillingProperties"
+        }
+      }
+    },
+    "EventTicketCategoriesBillingProperties": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "integer"
+        },
+        "fees": {
+          "type": "integer"
+        },
+        "vat": {
+          "type": "integer"
         }
       }
     }
