@@ -4926,23 +4926,11 @@
                 "place_id",
                 "latitude",
                 "longitude",
-                "street_address",
-                "street_number",
-                "route",
                 "city",
                 "country",
                 "timezone_id",
-                "postcode",
                 "administrative_area_level_1",
                 "administrative_area_level_2",
-                "administrative_area_level_3",
-                "administrative_area_level_4",
-                "administrative_area_level_5",
-                "sublocality_level_1",
-                "sublocality_level_2",
-                "sublocality_level_3",
-                "sublocality_level_4",
-                "sublocality_level_5",
                 "formatted_address",
                 "timezone_offset"
               ]
@@ -5048,8 +5036,7 @@
                   "is_manual_registration",
                   "is_unpaid_bank_transfer",
                   "tickets",
-                  "status",
-                  "cancelled_date"
+                  "status"
                 ]
               }
             },
@@ -5092,7 +5079,6 @@
             "participants_count",
             "total_revenue",
             "manual_revenue",
-            "invoices_archive_url",
             "participants_excel_url",
             "show_event_created_hint",
             "show_email_campaign_promotion"
