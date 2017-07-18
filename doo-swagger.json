@@ -3059,7 +3059,7 @@
         },
         "image_cover": {
           "type": "string",
-          "minLength": 1
+          "minLength": 0
         },
         "has_manual_approve": {
           "type": "boolean"
@@ -3169,23 +3169,11 @@
             "place_id",
             "latitude",
             "longitude",
-            "street_address",
-            "street_number",
-            "route",
             "city",
             "country",
             "timezone_id",
-            "postcode",
             "administrative_area_level_1",
             "administrative_area_level_2",
-            "administrative_area_level_3",
-            "administrative_area_level_4",
-            "administrative_area_level_5",
-            "sublocality_level_1",
-            "sublocality_level_2",
-            "sublocality_level_3",
-            "sublocality_level_4",
-            "sublocality_level_5",
             "formatted_address",
             "timezone_offset"
           ]
@@ -3343,7 +3331,6 @@
                 }
               },
               "required": [
-                "id",
                 "default_questions",
                 "additional_questions"
               ]
@@ -3359,7 +3346,7 @@
           "properties": {
             "name": {
               "type": "string",
-              "minLength": 1
+              "minLength": 0
             },
             "email": {
               "type": "string",
@@ -3367,7 +3354,7 @@
             },
             "phone": {
               "type": "string",
-              "minLength": 1
+              "minLength": 0
             },
             "organization": {
               "type": "string",
@@ -3485,11 +3472,7 @@
             "max": {
               "type": "number"
             }
-          },
-          "required": [
-            "min",
-            "max"
-          ]
+          }
         },
         "event_settings": {
           "type": "object",
@@ -3499,11 +3482,11 @@
               "properties": {
                 "de": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 0
                 },
                 "en": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 0
                 }
               },
               "required": [
@@ -3549,7 +3532,7 @@
               },
               "description": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 0
               },
               "show_remaining_capacity": {
                 "type": "boolean"
@@ -3602,7 +3585,6 @@
               "min",
               "vat",
               "vat_percent",
-              "start_date",
               "display_order",
               "available_amount",
               "is_featured",
@@ -3645,26 +3627,17 @@
         "id",
         "user_id",
         "contact_detail_id",
-        "email_attachment_id",
         "location_id",
         "title",
-        "organizer_name",
-        "description",
-        "short_description",
         "venue_address",
-        "venue_name",
         "start_date",
         "end_date",
         "created_date",
         "update_date",
         "draft_date",
-        "live_date",
         "is_deleted",
-        "deletion_date",
-        "cancelled_date",
         "short_name",
         "type",
-        "comment",
         "event_type",
         "bank_transfer_period",
         "booking_approval",
@@ -3864,7 +3837,7 @@
                   },
                   "description": {
                     "type": "string",
-                    "minLength": 0
+                    "minLength": 1
                   },
                   "status": {
                     "type": "string",
@@ -4096,7 +4069,7 @@
                         },
                         "description": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 0
                         },
                         "show_remaining_capacity": {
                           "type": "boolean"
@@ -5111,9 +5084,7 @@
                   }
                 },
                 "required": [
-                  "attendee_first_name",
                   "attendee_id",
-                  "attendee_last_name",
                   "attendee_status",
                   "buyer_first_name",
                   "buyer_last_name",
