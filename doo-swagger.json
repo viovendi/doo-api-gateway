@@ -4784,39 +4784,48 @@
     },
     "EventsIdDetailsGetResponse": {
       "type": "object",
+      "description": "DONE",
       "properties": {
         "response_status": {
           "type": "integer"
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "object",
           "properties": {
             "event_type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "id": {
               "type": "integer"
             },
             "title": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "start_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "end_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "amount": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1
             },
             "has_order_with_booking_approval": {
               "type": "boolean"
@@ -4825,72 +4834,118 @@
               "type": "object",
               "properties": {
                 "place_id": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "latitude": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "longitude": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "street_address": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "street_number": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "route": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "city": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "country": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "timezone_id": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "postcode": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_3": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_4": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_5": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_3": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_4": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_5": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "formatted_address": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "timezone_offset": {
-                  "type": "integer"
+                  "type": "integer",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "place_id",
+                "latitude",
+                "longitude",
+                "street_address",
+                "street_number",
+                "route",
+                "city",
+                "country",
+                "timezone_id",
+                "postcode",
+                "administrative_area_level_1",
+                "administrative_area_level_2",
+                "administrative_area_level_3",
+                "administrative_area_level_4",
+                "administrative_area_level_5",
+                "sublocality_level_1",
+                "sublocality_level_2",
+                "sublocality_level_3",
+                "sublocality_level_4",
+                "sublocality_level_5",
+                "formatted_address",
+                "timezone_offset"
+              ]
             },
             "ticket_categories": {
               "type": "array",
@@ -4901,7 +4956,8 @@
                     "type": "integer"
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "amount": {
                     "type": "integer"
@@ -4918,7 +4974,16 @@
                   "taken_amount": {
                     "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "amount",
+                  "price",
+                  "is_featured",
+                  "is_ended",
+                  "taken_amount"
+                ]
               }
             },
             "orders": {
@@ -4930,13 +4995,16 @@
                     "type": "integer"
                   },
                   "first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "order_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "is_manual_registration": {
                     "type": "boolean"
@@ -4953,18 +5021,36 @@
                           "type": "integer"
                         },
                         "ticket_category_name": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         }
-                      }
+                      },
+                      "required": [
+                        "amount",
+                        "ticket_category_name"
+                      ]
                     }
                   },
                   "status": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "cancelled_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "first_name",
+                  "last_name",
+                  "order_date",
+                  "is_manual_registration",
+                  "is_unpaid_bank_transfer",
+                  "tickets",
+                  "status",
+                  "cancelled_date"
+                ]
               }
             },
             "participants_count": {
@@ -4977,10 +5063,12 @@
               "type": "integer"
             },
             "invoices_archive_url": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "participants_excel_url": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "show_event_created_hint": {
               "type": "boolean"
@@ -4988,7 +5076,27 @@
             "show_email_campaign_promotion": {
               "type": "boolean"
             }
-          }
+          },
+          "required": [
+            "event_type",
+            "id",
+            "title",
+            "start_date",
+            "end_date",
+            "status",
+            "amount",
+            "has_order_with_booking_approval",
+            "address",
+            "ticket_categories",
+            "orders",
+            "participants_count",
+            "total_revenue",
+            "manual_revenue",
+            "invoices_archive_url",
+            "participants_excel_url",
+            "show_event_created_hint",
+            "show_email_campaign_promotion"
+          ]
         },
         "_links": {
           "type": "object",
@@ -4997,13 +5105,27 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
-      }
+      },
+      "required": [
+        "response_status",
+        "developer_message",
+        "user_message",
+        "data",
+        "_links"
+      ]
     }
   }
 }
