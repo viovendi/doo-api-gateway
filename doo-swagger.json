@@ -2775,6 +2775,7 @@
     },
     "QrcodesHashGetResponse": {
       "type": "object",
+      "description": "DONE",
       "properties": {
         "response_status": {
           "type": "integer"
