@@ -2834,12 +2834,8 @@
               "required": [
                 "id",
                 "event_ticket_id",
-                "custom_price",
                 "status",
-                "checkin_link",
-                "pdf_link",
-                "name_tag_link",
-                "passbook_link"
+                "checkin_link"
               ]
             }
           },
