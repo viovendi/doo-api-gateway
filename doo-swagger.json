@@ -4427,6 +4427,7 @@
     },
     "EventsIdAttendeesGetResponse": {
       "type": "object",
+      "description": "DONE",
       "properties": {
         "_links": {
           "type": "object",
@@ -4435,27 +4436,44 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "last": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "self": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "first",
+            "last",
+            "self"
+          ]
         },
         "_embedded": {
           "type": "object",
@@ -4466,28 +4484,35 @@
                 "type": "object",
                 "properties": {
                   "attendee_first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "attendee_id": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "attendee_last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "attendee_status": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "buyer_first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "buyer_last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "category_id": {
                     "type": "integer"
                   },
                   "category_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "is_checked": {
                     "type": "boolean"
@@ -4496,12 +4521,29 @@
                     "type": "integer"
                   },
                   "ticket_hash": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
-                }
+                },
+                "required": [
+                  "attendee_first_name",
+                  "attendee_id",
+                  "attendee_last_name",
+                  "attendee_status",
+                  "buyer_first_name",
+                  "buyer_last_name",
+                  "category_id",
+                  "category_name",
+                  "is_checked",
+                  "order_id",
+                  "ticket_hash"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "attendees"
+          ]
         },
         "page": {
           "type": "integer"
@@ -4515,7 +4557,15 @@
         "total_items": {
           "type": "integer"
         }
-      }
+      },
+      "required": [
+        "_links",
+        "_embedded",
+        "page",
+        "page_count",
+        "page_size",
+        "total_items"
+      ]
     },
     "OrganizersCurrentGetResponse": {
       "description": "",
