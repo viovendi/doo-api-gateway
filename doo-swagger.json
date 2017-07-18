@@ -5131,37 +5131,51 @@
           "type": "number"
         },
         "first_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "last_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "is_active": {
           "type": "boolean"
         },
         "tel": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "recently_logo": {
           "type": "array",
           "items": {
             "properties": {
               "image_id": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "image_shape_type": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "original_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "preview_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "image_id",
+              "image_shape_type",
+              "original_url",
+              "preview_url"
+            ]
           }
         },
         "recently_cover": {
@@ -5169,15 +5183,23 @@
           "items": {
             "properties": {
               "cover_id": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "original_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "preview_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "cover_id",
+              "original_url",
+              "preview_url"
+            ]
           }
         },
         "recently_contacts": {
@@ -5185,18 +5207,28 @@
           "items": {
             "properties": {
               "name": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "email": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "phone": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "organization": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "name",
+              "email",
+              "phone",
+              "organization"
+            ]
           }
         },
         "allowed_access_code_amount": {
@@ -5206,51 +5238,67 @@
           "type": "number"
         },
         "recently_vat_texts": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "recently_attribute_files": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "invoice_details": {
           "type": "object",
           "properties": {
             "account_holder": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "iban": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "bic": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "bank_name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "vat_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "street": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "zip_code": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "house": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          }
+          },
+          "required": [
+            "account_holder",
+            "iban",
+            "bic",
+            "bank_name",
+            "vat_id",
+            "name",
+            "street",
+            "zip_code",
+            "city",
+            "house"
+          ]
         },
         "fees": {
           "type": "object",
@@ -5264,7 +5312,12 @@
             "viovendi_fees": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "service_fees",
+            "payment_fees",
+            "viovendi_fees"
+          ]
         },
         "product_fees": {
           "type": "object",
@@ -5278,13 +5331,22 @@
             "viovendi_fees": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "service_fees",
+            "payment_fees",
+            "viovendi_fees"
+          ]
         },
         "require_vat_id": {
           "type": "boolean"
         },
-        "standard_ticket_option": {},
-        "standard_email_attachments": {},
+        "standard_ticket_option": {
+          "type": "object"
+        },
+        "standard_email_attachments": {
+          "type": "object"
+        },
         "manager_events_per_page": {
           "type": "number"
         },
@@ -5308,16 +5370,22 @@
                     "type": "number"
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
-                  "value": {},
+                  "value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
                   "organizer_id": {
                     "type": "number"
                   },
                   "event_id": {
                     "type": "number"
                   },
-                  "is_favourite": {},
+                  "is_favourite": {
+                    "type": "boolean"
+                  },
                   "default": {
                     "type": "boolean"
                   },
@@ -5327,12 +5395,32 @@
                   "controlling": {
                     "type": "boolean"
                   },
-                  "order": {},
-                  "data": {}
-                }
+                  "order": {
+                    "type": "object"
+                  },
+                  "data": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "id",
+                  "type",
+                  "name",
+                  "value",
+                  "organizer_id",
+                  "event_id",
+                  "is_favourite",
+                  "template",
+                  "controlling",
+                  "order",
+                  "data"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "templates"
+          ]
         },
         "manager_contacts_per_page": {
           "type": "number"
@@ -5353,16 +5441,14 @@
           "type": "boolean"
         },
         "demo_screens": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "has_events_with_taxes": {
           "type": "boolean"
         },
         "registration_current_step": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "dashboard_guide_show": {
           "type": "boolean"
@@ -5380,13 +5466,58 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
-      }
+      },
+      "required": [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "tel",
+        "recently_logo",
+        "recently_cover",
+        "recently_contacts",
+        "allowed_access_code_amount",
+        "allowed_coupon_code_amount",
+        "recently_vat_texts",
+        "recently_attribute_files",
+        "invoice_details",
+        "fees",
+        "product_fees",
+        "require_vat_id",
+        "standard_ticket_option",
+        "standard_email_attachments",
+        "manager_events_per_page",
+        "bookings_per_page",
+        "event_bookings_per_page",
+        "event_attributes",
+        "manager_contacts_per_page",
+        "manager_email_campaigns_per_page",
+        "team_members_per_page",
+        "has_events",
+        "has_live_events",
+        "has_paid_events",
+        "demo_screens",
+        "has_events_with_taxes",
+        "registration_current_step",
+        "dashboard_guide_show",
+        "event_guide_show",
+        "disabled_guided_tour",
+        "_links"
+      ]
     },
     "EventsIdDetailsGetResponse": {
       "type": "object",
