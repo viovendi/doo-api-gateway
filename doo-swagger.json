@@ -2780,19 +2780,23 @@
           "type": "integer"
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "object",
           "properties": {
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "item": {
               "type": "object",
@@ -2804,28 +2808,54 @@
                   "type": "integer"
                 },
                 "custom_price": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "status": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "checkin_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "pdf_link": {
                   "type": "string"
                 },
                 "name_tag_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "passbook_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "id",
+                "event_ticket_id",
+                "custom_price",
+                "status",
+                "checkin_link",
+                "pdf_link",
+                "name_tag_link",
+                "passbook_link"
+              ]
             }
-          }
+          },
+          "required": [
+            "status",
+            "type",
+            "item"
+          ]
         }
-      }
+      },
+      "required": [
+        "response_status",
+        "developer_message",
+        "user_message",
+        "data"
+      ]
     },
     "CommonStatusResponse": {
       "type": "object",
