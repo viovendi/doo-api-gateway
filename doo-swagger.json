@@ -2172,7 +2172,7 @@
           "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "boolean"
+          "type": "string"
         },
         "total_event_capacity": {
           "type": "string",
