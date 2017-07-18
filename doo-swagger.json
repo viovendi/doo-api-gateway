@@ -3351,29 +3351,33 @@
     },
     "OauthPostRequest": {
       "type": "object",
+      "description": "DONE",
+      "properties": {
+        "username": {
+          "type": "string",
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grant_type": {
+          "type": "string",
+          "default": "password",
+          "minLength": 1
+        },
+        "client_id": {
+          "type": "string",
+          "default": "viovendi_web",
+          "minLength": 1
+        }
+      },
       "required": [
         "client_id",
         "grant_type",
         "password",
         "username"
-      ],
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "grant_type": {
-          "type": "string",
-          "default": "password"
-        },
-        "client_id": {
-          "type": "string",
-          "default": "viovendi_web"
-        }
-      },
-      "description": "Request model for `POST /oauth`"
+      ]
     },
     "EventsGetResponse": {
       "type": "object",
