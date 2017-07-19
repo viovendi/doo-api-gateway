@@ -188,7 +188,8 @@
     "/events/{eventId}": {
       "get": {
         "tags": [
-          "events", "event_order"
+          "events",
+          "event_order"
         ],
         "consumes": [
           "application/json"
@@ -662,6 +663,148 @@
             "integration.request.path.eventId": "method.request.path.eventId"
           },
           "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/orders",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "events"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/events/{eventId}/codes/{codes}": {
+      "get": {
+        "tags": [
+          "event_order"
+        ],
+        "description": "Get categories by acces/promo codes",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "codes",
+            "in": "path",
+            "required": false,
+            "type": "string",
+            "description": "Access/Promo code with comma separated",
+            "pattern": ".+(,.+)*"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/ApplyAccessOrPromoCode"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId",
+            "integration.request.path.codes": "method.request.path.codes"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/codes/{codes}",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
           "type": "http_proxy"
@@ -3046,7 +3189,10 @@
           "type": "number"
         },
         "ticket_categories": {
-          "$ref": "#/definitions/EventTicketCategories"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventTicketCategoriesSingle"
+          }
         },
         "participants_count": {
           "type": "number"
@@ -5003,11 +5149,90 @@
         }
       }
     },
-    "EventTicketCategories": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/EventTicketCategoriesSingle"
-      }
+    "ApplyAccessOrPromoCode": {
+      "type": "object",
+      "properties": {
+        "response_status": {
+          "type": "integer"
+        },
+        "developer_message": {
+          "type": "string"
+        },
+        "user_message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "access_code",
+                "promo_code",
+                "promo_code,access_code",
+                "access_code,promo_code"
+              ],
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/EventTicketCategoriesSingle"
+                  },
+                  {
+                    "properties": {
+                      "open_by_codes": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "member": {
+              "type": "array",
+              "items": {
+              }
+            }
+          },
+          "required": [
+            "type",
+            "member",
+            "data"
+          ]
+        },
+        "_links": {
+          "properties": {
+            "self": {
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "self"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "response_status",
+        "data",
+        "user_message",
+        "_links"
+      ]
     },
     "EventTicketCategoriesSingle": {
       "type": "object",
@@ -5063,7 +5288,26 @@
         "billing": {
           "$ref": "#/definitions/EventTicketCategoriesBilling"
         }
-      }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "show_remaining_capacity",
+        "min",
+        "vat",
+        "vat_percent",
+        "start_date",
+        "display_order",
+        "available_amount",
+        "is_featured",
+        "is_ended",
+        "ticket_price",
+        "ticket_fees",
+        "max_available_amount",
+        "min_available_amount",
+        "billing"
+      ]
     },
     "EventTicketCategoriesBilling": {
       "type": "object",
