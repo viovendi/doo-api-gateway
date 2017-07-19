@@ -2224,7 +2224,7 @@
           "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "string"
+          "type": "boolean"
         },
         "total_event_capacity": {
           "type": "string",
@@ -2247,7 +2247,7 @@
         },
         "image_cover": {
           "type": "string",
-          "minLength": 1
+          "minLength": 0
         },
         "has_manual_approve": {
           "type": "boolean"
@@ -2298,7 +2298,7 @@
         },
         "image_cover_preview_url": {
           "type": "string",
-          "minLength": 1
+          "minLength": 0
         },
         "has_order_with_booking_approval": {
           "type": "boolean"
@@ -2474,7 +2474,7 @@
           "properties": {
             "name": {
               "type": "string",
-              "minLength": 1
+              "minLength": 0
             },
             "email": {
               "type": "string",
@@ -2482,7 +2482,7 @@
             },
             "phone": {
               "type": "string",
-              "minLength": 1
+              "minLength": 0
             },
             "organization": {
               "type": "string",
@@ -2584,11 +2584,11 @@
               "properties": {
                 "de": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 0
                 },
                 "en": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 0
                 }
               },
               "required": [
@@ -2663,7 +2663,7 @@
               },
               "description": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 0
               },
               "show_remaining_capacity": {
                 "type": "boolean"
@@ -3031,7 +3031,7 @@
           "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "string",
+          "type": "boolean",
           "minLength": 1
         },
         "total_event_capacity": {
