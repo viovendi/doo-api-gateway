@@ -1,9 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.7425",
-    "title": "doo API Documentation",
-    "description": "doo API Documentation"
+    "version": "1.1.0",
+    "title": "doo",
+    "description": "doo API Documentation",
+    "contact": {
+      "name": "doo API Support",
+      "email": "kundenservice@doo.net"
+    }
   },
   "host": "integration.doo.net",
   "basePath": "/v1",
@@ -1433,9 +1437,7 @@
         }
       },
       "options": {
-        "tags": [
-          "organizers"
-        ],
+        "tags": ["organizers"],
         "consumes": [
           "application/json"
         ],
@@ -2094,8 +2096,7 @@
       },
       "options": {
         "tags": [
-          "contacts"
-        ],
+          "contacts"],
         "consumes": [
           "application/json"
         ],
@@ -2618,7 +2619,7 @@
   "definitions": {
     "OauthPostResponse": {
       "type": "object",
-      "description": "Response model for `POST /oauth`",
+      "description": "",
       "properties": {
         "response_status": {
           "type": "integer"
@@ -2679,6 +2680,7 @@
     },
     "EventsIdOrdersGetResponse": {
       "type": "object",
+      "description": "",
       "properties": {
         "_links": {
           "type": "object",
@@ -2889,8 +2891,8 @@
       ]
     },
     "EventsIdEditGetResponse": {
-      "description": "",
       "type": "object",
+      "description": "",
       "properties": {
         "id": {
           "type": "number"
@@ -3015,7 +3017,8 @@
           "minLength": 1
         },
         "image_cover": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0
         },
         "has_manual_approve": {
           "type": "boolean"
@@ -3062,13 +3065,11 @@
           "type": "number"
         },
         "demo_screen": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "image_cover_preview_url": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0
         },
         "has_order_with_booking_approval": {
           "type": "boolean"
@@ -3203,10 +3204,7 @@
                   }
                 },
                 "additional_questions": {
-                  "type": "array",
-                  "items": {
-                    "properties": {}
-                  }
+                  "type": "array"
                 }
               },
               "required": [
@@ -3228,10 +3226,7 @@
                   }
                 },
                 "additional_questions": {
-                  "type": "array",
-                  "items": {
-                    "properties": {}
-                  }
+                  "type": "array"
                 }
               },
               "required": [
@@ -3249,14 +3244,16 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 0
             },
             "email": {
               "type": "string",
               "minLength": 1
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "minLength": 0
             },
             "organization": {
               "type": "string",
@@ -3291,10 +3288,7 @@
           "type": "object",
           "properties": {
             "attributes": {
-              "type": "array",
-              "items": {
-                "properties": {}
-              }
+              "type": "array"
             },
             "templates": {
               "type": "array",
@@ -3360,10 +3354,12 @@
               "type": "object",
               "properties": {
                 "de": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 0
                 },
                 "en": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 0
                 }
               },
               "required": [
@@ -3437,7 +3433,8 @@
                 "type": "number"
               },
               "description": {
-                "type": "string"
+                "type": "string",
+                "minLength": 0
               },
               "show_remaining_capacity": {
                 "type": "boolean"
@@ -3534,6 +3531,11 @@
           "required": [
             "self"
           ]
+        },
+        "external_user_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User ID in the external system (used in webhooks)"
         }
       },
       "required": [
@@ -3591,24 +3593,29 @@
     },
     "QrcodesHashGetResponse": {
       "type": "object",
+      "description": "",
       "properties": {
         "response_status": {
           "type": "integer"
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "object",
           "properties": {
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "item": {
               "type": "object",
@@ -3620,31 +3627,54 @@
                   "type": "integer"
                 },
                 "custom_price": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "status": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "checkin_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "pdf_link": {
                   "type": "string"
                 },
                 "name_tag_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "passbook_link": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "id",
+                "event_ticket_id",
+                "status",
+                "checkin_link"
+              ]
             }
-          }
+          },
+          "required": [
+            "status",
+            "type",
+            "item"
+          ]
         }
-      }
+      },
+      "required": [
+        "response_status",
+        "developer_message",
+        "user_message",
+        "data"
+      ]
     },
     "CommonStatusResponse": {
       "type": "object",
+      "description": "",
       "required": [
         "developer_message",
         "response_status",
@@ -3663,13 +3693,14 @@
           "minLength": 1
         },
         "data": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       }
     },
     "EventsIdGetResponse": {
-      "description": "",
       "type": "object",
+      "description": "",
       "properties": {
         "id": {
           "type": "number"
@@ -3680,87 +3711,122 @@
         "contact_detail_id": {
           "type": "number"
         },
-        "email_attachment_id": {},
+        "email_attachment_id": {
+          "type": "number"
+        },
         "location_id": {
           "type": "number"
         },
         "title": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "organizer_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "short_description": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "venue_address": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "venue_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "start_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "end_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "created_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "update_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "draft_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "live_date": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "is_deleted": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "deletion_date": {},
-        "cancelled_date": {},
+        "deletion_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cancelled_date": {
+          "type": "string",
+          "minLength": 1
+        },
         "short_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "comment": {},
+        "comment": {
+          "type": "string",
+          "minLength": 1
+        },
         "event_type": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "bank_transfer_period": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "booking_approval": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "boolean"
+          "type": "boolean",
+          "minLength": 1
         },
         "total_event_capacity": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "status": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "total_amount": {
           "type": "number"
         },
         "image_shape_type": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "image": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "image_cover": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0
         },
         "has_manual_approve": {
           "type": "boolean"
@@ -3778,68 +3844,106 @@
               "type": "number"
             },
             "place_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "latitude": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "longitude": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
-            "street_address": {},
-            "street_number": {},
+            "street_address": {
+              "type": "string",
+              "minLength": 1
+            },
+            "street_number": {
+              "type": "string",
+              "minLength": 1
+            },
             "route": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "country": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "timezone_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "postcode": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "administrative_area_level_1": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "administrative_area_level_2": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "administrative_area_level_3": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "administrative_area_level_4": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "administrative_area_level_5": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "sublocality_level_1": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "sublocality_level_2": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "sublocality_level_3": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "sublocality_level_4": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "sublocality_level_5": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "formatted_address": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "timezone_offset": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "id",
+            "place_id",
+            "latitude",
+            "longitude",
+            "city",
+            "country",
+            "timezone_id",
+            "administrative_area_level_1",
+            "administrative_area_level_2",
+            "formatted_address",
+            "timezone_offset"
+          ]
         },
         "questions": {
           "type": "object",
@@ -3853,7 +3957,8 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
                 },
                 "additional_questions": {
@@ -3866,32 +3971,60 @@
                       "question_id": {
                         "type": "number"
                       },
-                      "answer_id": {},
-                      "answer": {},
+                      "answer_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "answer": {
+                        "type": "string",
+                        "minLength": 1
+                      },
                       "required": {
                         "type": "boolean"
                       },
                       "label": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "field_type": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "field_options": {
                         "type": "object",
                         "properties": {
                           "size": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           }
-                        }
+                        },
+                        "required": [
+                          "size"
+                        ]
                       },
                       "order": {
                         "type": "number"
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "question_id",
+                      "answer_id",
+                      "answer",
+                      "required",
+                      "label",
+                      "field_type",
+                      "field_options",
+                      "order"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "id",
+                "default_questions",
+                "additional_questions"
+              ]
             },
             "attendee_questions": {
               "type": "object",
@@ -3902,7 +4035,8 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "properties": {}
+                    "type": "string",
+                    "minLength": 1
                   }
                 },
                 "additional_questions": {
@@ -3915,62 +4049,108 @@
                       "question_id": {
                         "type": "number"
                       },
-                      "answer_id": {},
-                      "answer": {},
+                      "answer_id": {
+                        "type": "number"
+                      },
+                      "answer": {
+                        "type": "string",
+                        "minLength": 1
+                      },
                       "required": {
                         "type": "boolean"
                       },
                       "label": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "field_type": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "field_options": {
                         "type": "object",
                         "properties": {
                           "size": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           }
-                        }
+                        },
+                        "required": [
+                          "size"
+                        ]
                       },
                       "order": {
                         "type": "number"
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "question_id",
+                      "answer_id",
+                      "answer",
+                      "required",
+                      "label",
+                      "field_type",
+                      "field_options",
+                      "order"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "default_questions",
+                "additional_questions"
+              ]
             }
-          }
+          },
+          "required": [
+            "buyer_questions",
+            "attendee_questions"
+          ]
         },
         "contact": {
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 0
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "minLength": 0
             },
             "organization": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "organizer_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          }
+          },
+          "required": [
+            "name",
+            "email",
+            "phone",
+            "organization",
+            "organizer_id"
+          ]
         },
         "terms": {
           "type": "object",
           "properties": {
             "type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          }
+          },
+          "required": [
+            "type"
+          ]
         },
         "event_attributes": {
           "type": "object",
@@ -3978,22 +4158,87 @@
             "attributes": {
               "type": "array",
               "items": {
-                "properties": {}
+                "properties": {
+                  "controlling": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "order": {
+                    "type": "number"
+                  },
+                  "template_id": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "controlling",
+                  "data",
+                  "id",
+                  "order",
+                  "template_id"
+                ]
               }
             },
             "templates": {
               "type": "array",
               "items": {
-                "properties": {}
+                "properties": {
+                  "controlling": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "default": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "template": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "controlling",
+                  "data",
+                  "default",
+                  "id",
+                  "name",
+                  "template",
+                  "type"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "attributes",
+            "templates"
+          ]
         },
         "ticket_limitation": {
           "type": "object",
           "properties": {
-            "min": {},
-            "max": {}
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
           }
         },
         "event_settings": {
@@ -4003,12 +4248,18 @@
               "type": "object",
               "properties": {
                 "de": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 0
                 },
                 "en": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 0
                 }
-              }
+              },
+              "required": [
+                "de",
+                "en"
+              ]
             },
             "has_white_labels": {
               "type": "number"
@@ -4022,7 +4273,14 @@
             "payment_paypal": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "custom_checkout_text",
+            "has_white_labels",
+            "payment_bank_transfer",
+            "payment_credit_card",
+            "payment_paypal"
+          ]
         },
         "amount": {
           "type": "number"
@@ -4032,19 +4290,23 @@
           "items": {
             "properties": {
               "id": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "name": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "description": {
-                "type": "string"
+                "type": "string",
+                "minLength": 0
               },
               "show_remaining_capacity": {
                 "type": "boolean"
               },
               "min": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "vat": {
                 "type": "number"
@@ -4053,10 +4315,12 @@
                 "type": "number"
               },
               "start_date": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "display_order": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "available_amount": {
                 "type": "number"
@@ -4079,7 +4343,24 @@
               "min_available_amount": {
                 "type": "number"
               }
-            }
+            },
+            "required": [
+              "id",
+              "name",
+              "description",
+              "show_remaining_capacity",
+              "min",
+              "vat",
+              "vat_percent",
+              "display_order",
+              "available_amount",
+              "is_featured",
+              "is_ended",
+              "ticket_price",
+              "ticket_fees",
+              "max_available_amount",
+              "min_available_amount"
+            ]
           }
         },
         "participants_count": {
@@ -4095,16 +4376,65 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
-      }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "contact_detail_id",
+        "location_id",
+        "title",
+        "venue_address",
+        "start_date",
+        "end_date",
+        "created_date",
+        "update_date",
+        "draft_date",
+        "is_deleted",
+        "short_name",
+        "type",
+        "event_type",
+        "bank_transfer_period",
+        "booking_approval",
+        "duplicate_email_detection",
+        "total_event_capacity",
+        "status",
+        "total_amount",
+        "image_shape_type",
+        "image",
+        "image_cover",
+        "has_manual_approve",
+        "has_coupons",
+        "has_access_codes",
+        "address",
+        "questions",
+        "contact",
+        "terms",
+        "event_attributes",
+        "ticket_limitation",
+        "event_settings",
+        "amount",
+        "ticket_categories",
+        "participants_count",
+        "show_bank_transfer",
+        "_links"
+      ]
     },
     "OauthZapierPostRequest": {
       "type": "object",
+      "description": "",
       "required": [
         "client_id",
         "client_secret",
@@ -4116,10 +4446,12 @@
           "minLength": 1
         },
         "code": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "refresh_token": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "grant_type": {
           "type": "string",
@@ -4132,38 +4464,44 @@
         },
         "redirect_uri": {
           "type": "string",
-          "default": "https://www.doo.net"
+          "default": "https://www.doo.net",
+          "minLength": 1
         }
       }
     },
     "OauthPostRequest": {
       "type": "object",
+      "description": "",
+      "properties": {
+        "username": {
+          "type": "string",
+          "minLength": 1
+        },
+        "password": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grant_type": {
+          "type": "string",
+          "default": "password",
+          "minLength": 1
+        },
+        "client_id": {
+          "type": "string",
+          "default": "viovendi_web",
+          "minLength": 1
+        }
+      },
       "required": [
         "client_id",
         "grant_type",
         "password",
         "username"
-      ],
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "grant_type": {
-          "type": "string",
-          "default": "password"
-        },
-        "client_id": {
-          "type": "string",
-          "default": "viovendi_web"
-        }
-      },
-      "description": "Request model for `POST /oauth`"
+      ]
     },
     "EventsGetResponse": {
       "type": "object",
+      "description": "",
       "properties": {
         "_links": {
           "type": "object",
@@ -4172,25 +4510,37 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "first": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             },
             "last": {
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
           }
         },
@@ -4203,55 +4553,70 @@
                 "type": "object",
                 "properties": {
                   "event_type": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "booking_approval": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "total_event_capacity": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "id": {
                     "type": "integer"
                   },
                   "title": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "organizer_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "total_amount": {
                     "type": "integer"
                   },
                   "image": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "image_cover": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "venue_address": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "venue_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "start_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "end_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "status": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "short_description": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "fees_type": {
                     "type": "integer"
@@ -4260,7 +4625,8 @@
                     "type": "integer"
                   },
                   "vat_option_text": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "ticket_option": {
                     "type": "boolean"
@@ -4269,7 +4635,8 @@
                     "type": "integer"
                   },
                   "image_shape_type": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "participants_count": {
                     "type": "integer"
@@ -4281,19 +4648,24 @@
                     "type": "boolean"
                   },
                   "image_preview_url": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "image_cover_preview_url": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "image_id": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "image_cover_id": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "email_attachments": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "total_revenue": {
                     "type": "integer"
@@ -4322,78 +4694,127 @@
                       "max": {
                         "type": "integer"
                       }
-                    }
+                    },
+                    "required": [
+                      "min",
+                      "max"
+                    ]
                   },
                   "address": {
                     "type": "object",
                     "properties": {
                       "place_id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "latitude": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "longitude": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "street_address": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "street_number": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "route": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "city": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "country": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "timezone_id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "postcode": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "administrative_area_level_1": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "administrative_area_level_2": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "administrative_area_level_3": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "administrative_area_level_4": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "administrative_area_level_5": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "sublocality_level_1": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "sublocality_level_2": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "sublocality_level_3": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "sublocality_level_4": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "sublocality_level_5": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "formatted_address": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "timezone_offset": {
                         "type": "integer"
                       }
-                    }
+                    },
+                    "required": [
+                      "place_id",
+                      "latitude",
+                      "longitude",
+                      "street_address",
+                      "street_number",
+                      "route",
+                      "city",
+                      "country",
+                      "timezone_id",
+                      "postcode",
+                      "administrative_area_level_1",
+                      "administrative_area_level_2",
+                      "administrative_area_level_3",
+                      "administrative_area_level_4",
+                      "administrative_area_level_5",
+                      "sublocality_level_1",
+                      "sublocality_level_2",
+                      "sublocality_level_3",
+                      "sublocality_level_4",
+                      "sublocality_level_5",
+                      "formatted_address",
+                      "timezone_offset"
+                    ]
                   },
                   "ticket_categories": {
                     "type": "array",
@@ -4404,7 +4825,8 @@
                           "type": "integer"
                         },
                         "name": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "amount": {
                           "type": "integer"
@@ -4413,7 +4835,8 @@
                           "type": "integer"
                         },
                         "description": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 0
                         },
                         "show_remaining_capacity": {
                           "type": "boolean"
@@ -4431,19 +4854,24 @@
                           "type": "integer"
                         },
                         "start_date": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "relative_start_date": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "relative_start_date_type": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "relative_end_date": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "relative_end_date_type": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "display_order": {
                           "type": "integer"
@@ -4461,7 +4889,8 @@
                           "type": "boolean"
                         },
                         "taken_amount": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         },
                         "ticket_price": {
                           "type": "integer"
@@ -4475,7 +4904,20 @@
                         "min_available_amount": {
                           "type": "integer"
                         }
-                      }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "description",
+                        "show_remaining_capacity",
+                        "min",
+                        "vat",
+                        "vat_percent",
+                        "display_order",
+                        "available_amount",
+                        "is_featured",
+                        "is_ended"
+                      ]
                     }
                   },
                   "questions": {
@@ -4490,7 +4932,8 @@
                           "default_questions": {
                             "type": "array",
                             "items": {
-                              "type": "string"
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additional_questions": {
@@ -4499,10 +4942,12 @@
                               "type": "object",
                               "properties": {
                                 "label": {
-                                  "type": "string"
+                                  "type": "string",
+                                  "minLength": 1
                                 },
                                 "field_type": {
-                                  "type": "string"
+                                  "type": "string",
+                                  "minLength": 1
                                 },
                                 "required": {
                                   "type": "boolean"
@@ -4511,7 +4956,8 @@
                                   "type": "object",
                                   "properties": {
                                     "description": {
-                                      "type": "string"
+                                      "type": "string",
+                                      "minLength": 1
                                     },
                                     "options": {
                                       "type": "array",
@@ -4519,17 +4965,30 @@
                                         "type": "object",
                                         "properties": {
                                           "label": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "required": [
+                                          "label"
+                                        ]
                                       }
                                     }
                                   }
                                 }
-                              }
+                              },
+                              "required": [
+                                "description",
+                                "options"
+                              ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "id",
+                          "default_questions",
+                          "additional_questions"
+                        ]
                       },
                       "attendee_questions": {
                         "type": "object",
@@ -4540,7 +4999,8 @@
                           "default_questions": {
                             "type": "array",
                             "items": {
-                              "type": "string"
+                              "type": "string",
+                              "minLength": 1
                             }
                           },
                           "additional_questions": {
@@ -4549,10 +5009,12 @@
                               "type": "object",
                               "properties": {
                                 "label": {
-                                  "type": "string"
+                                  "type": "string",
+                                  "minLength": 1
                                 },
                                 "field_type": {
-                                  "type": "string"
+                                  "type": "string",
+                                  "minLength": 1
                                 },
                                 "required": {
                                   "type": "boolean"
@@ -4561,7 +5023,8 @@
                                   "type": "object",
                                   "properties": {
                                     "description": {
-                                      "type": "string"
+                                      "type": "string",
+                                      "minLength": 1
                                     },
                                     "options": {
                                       "type": "array",
@@ -4569,47 +5032,80 @@
                                         "type": "object",
                                         "properties": {
                                           "label": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "required": [
+                                          "label"
+                                        ]
                                       }
                                     }
                                   }
                                 }
-                              }
+                              },
+                              "required": [
+                                "description",
+                                "options"
+                              ]
                             }
                           }
-                        }
+                        },
+                        "required": [
+                          "id",
+                          "default_questions",
+                          "additional_questions"
+                        ]
                       }
-                    }
+                    },
+                    "required": [
+                      "buyer_questions",
+                      "attendee_questions"
+                    ]
                   },
                   "contact": {
                     "type": "object",
                     "properties": {
                       "name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "email": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "phone": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "organization": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "organizer_id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
-                    }
+                    },
+                    "required": [
+                      "name",
+                      "email",
+                      "phone",
+                      "organization",
+                      "organizer_id"
+                    ]
                   },
                   "terms": {
                     "type": "object",
                     "properties": {
                       "type": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
-                    }
+                    },
+                    "required": [
+                      "type"
+                    ]
                   },
                   "event_attributes": {
                     "type": "object",
@@ -4620,7 +5116,11 @@
                       "templates": {
                         "type": "array"
                       }
-                    }
+                    },
+                    "required": [
+                      "attributes",
+                      "templates"
+                    ]
                   },
                   "_links": {
                     "type": "object",
@@ -4629,16 +5129,46 @@
                         "type": "object",
                         "properties": {
                           "href": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                           }
-                        }
+                        },
+                        "required": [
+                          "href"
+                        ]
                       }
-                    }
+                    },
+                    "required": [
+                      "self"
+                    ]
                   }
-                }
+                },
+                "required": [
+                  "event_type",
+                  "total_event_capacity",
+                  "id",
+                  "title",
+                  "total_amount",
+                  "image",
+                  "venue_address",
+                  "start_date",
+                  "end_date",
+                  "status",
+                  "type",
+                  "amount",
+                  "image_shape_type",
+                  "participants_count",
+                  "total_revenue",
+                  "show_bank_transfer",
+                  "ticket_categories",
+                  "_links"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "events"
+          ]
         },
         "page_count": {
           "type": "integer"
@@ -4652,7 +5182,15 @@
         "page": {
           "type": "integer"
         }
-      }
+      },
+      "required": [
+        "_links",
+        "_embedded",
+        "page_count",
+        "page_size",
+        "total_items",
+        "page"
+      ]
     },
     "EventsPostRequest": {
       "properties": {
@@ -4956,6 +5494,7 @@
     },
     "OrdersIdGetResponse": {
       "type": "object",
+      "description": "",
       "properties": {
         "contact_center": {
           "type": "boolean"
@@ -5495,6 +6034,7 @@
     },
     "OauthZapierPostResponse": {
       "type": "object",
+      "description": "",
       "required": [
         "access_token",
         "refresh_token"
@@ -5540,37 +6080,47 @@
                     "type": "object",
                     "properties": {
                       "attendee_first_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "attendee_id": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "attendee_last_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "attendee_status": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "buyer_first_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "buyer_last_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "category_id": {
-                        "type": "integer"
+                        "type": "integer",
+                        "minimum": 0
                       },
                       "category_name": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "is_checked": {
                         "type": "boolean"
                       },
                       "order_id": {
-                        "type": "integer"
+                        "type": "integer",
+                        "minimum": 0
                       },
                       "ticket_hash": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
                     }
                   }
@@ -5592,37 +6142,51 @@
           "type": "number"
         },
         "first_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "last_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "is_active": {
           "type": "boolean"
         },
         "tel": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "recently_logo": {
           "type": "array",
           "items": {
             "properties": {
               "image_id": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "image_shape_type": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "original_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "preview_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "image_id",
+              "image_shape_type",
+              "original_url",
+              "preview_url"
+            ]
           }
         },
         "recently_cover": {
@@ -5630,15 +6194,23 @@
           "items": {
             "properties": {
               "cover_id": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "original_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "preview_url": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "cover_id",
+              "original_url",
+              "preview_url"
+            ]
           }
         },
         "recently_contacts": {
@@ -5646,18 +6218,28 @@
           "items": {
             "properties": {
               "name": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "email": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "phone": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               },
               "organization": {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "name",
+              "email",
+              "phone",
+              "organization"
+            ]
           }
         },
         "allowed_access_code_amount": {
@@ -5667,51 +6249,67 @@
           "type": "number"
         },
         "recently_vat_texts": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "recently_attribute_files": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "invoice_details": {
           "type": "object",
           "properties": {
             "account_holder": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "iban": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "bic": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "bank_name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "vat_id": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "name": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "street": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "zip_code": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "house": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          }
+          },
+          "required": [
+            "account_holder",
+            "iban",
+            "bic",
+            "bank_name",
+            "vat_id",
+            "name",
+            "street",
+            "zip_code",
+            "city",
+            "house"
+          ]
         },
         "fees": {
           "type": "object",
@@ -5725,7 +6323,12 @@
             "viovendi_fees": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "service_fees",
+            "payment_fees",
+            "viovendi_fees"
+          ]
         },
         "product_fees": {
           "type": "object",
@@ -5739,13 +6342,22 @@
             "viovendi_fees": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "service_fees",
+            "payment_fees",
+            "viovendi_fees"
+          ]
         },
         "require_vat_id": {
           "type": "boolean"
         },
-        "standard_ticket_option": {},
-        "standard_email_attachments": {},
+        "standard_ticket_option": {
+          "type": "object"
+        },
+        "standard_email_attachments": {
+          "type": "object"
+        },
         "manager_events_per_page": {
           "type": "number"
         },
@@ -5769,16 +6381,22 @@
                     "type": "number"
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
-                  "value": {},
+                  "value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
                   "organizer_id": {
                     "type": "number"
                   },
                   "event_id": {
                     "type": "number"
                   },
-                  "is_favourite": {},
+                  "is_favourite": {
+                    "type": "boolean"
+                  },
                   "default": {
                     "type": "boolean"
                   },
@@ -5788,12 +6406,32 @@
                   "controlling": {
                     "type": "boolean"
                   },
-                  "order": {},
-                  "data": {}
-                }
+                  "order": {
+                    "type": "object"
+                  },
+                  "data": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "id",
+                  "type",
+                  "name",
+                  "value",
+                  "organizer_id",
+                  "event_id",
+                  "is_favourite",
+                  "template",
+                  "controlling",
+                  "order",
+                  "data"
+                ]
               }
             }
-          }
+          },
+          "required": [
+            "templates"
+          ]
         },
         "manager_contacts_per_page": {
           "type": "number"
@@ -5814,16 +6452,14 @@
           "type": "boolean"
         },
         "demo_screens": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
+          "type": "array"
         },
         "has_events_with_taxes": {
           "type": "boolean"
         },
         "registration_current_step": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "dashboard_guide_show": {
           "type": "boolean"
@@ -5841,49 +6477,100 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
-      }
+      },
+      "required": [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "recently_logo",
+        "recently_cover",
+        "recently_contacts",
+        "allowed_access_code_amount",
+        "allowed_coupon_code_amount",
+        "recently_vat_texts",
+        "recently_attribute_files",
+        "invoice_details",
+        "fees",
+        "product_fees",
+        "require_vat_id",
+        "manager_events_per_page",
+        "bookings_per_page",
+        "event_bookings_per_page",
+        "event_attributes",
+        "manager_contacts_per_page",
+        "manager_email_campaigns_per_page",
+        "team_members_per_page",
+        "has_events",
+        "has_live_events",
+        "has_paid_events",
+        "demo_screens",
+        "has_events_with_taxes",
+        "registration_current_step",
+        "dashboard_guide_show",
+        "event_guide_show",
+        "disabled_guided_tour",
+        "_links"
+      ]
     },
     "EventsIdDetailsGetResponse": {
       "type": "object",
+      "description": "",
       "properties": {
         "response_status": {
           "type": "integer"
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
           "type": "object",
           "properties": {
             "event_type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "id": {
               "type": "integer"
             },
             "title": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "start_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "end_date": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "status": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "amount": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1
             },
             "has_order_with_booking_approval": {
               "type": "boolean"
@@ -5892,72 +6579,106 @@
               "type": "object",
               "properties": {
                 "place_id": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "latitude": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "longitude": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "street_address": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "street_number": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "route": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "city": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "country": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "timezone_id": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "postcode": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_3": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_4": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "administrative_area_level_5": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_1": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_2": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_3": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_4": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "sublocality_level_5": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "formatted_address": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 },
                 "timezone_offset": {
-                  "type": "integer"
+                  "type": "integer",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "place_id",
+                "latitude",
+                "longitude",
+                "city",
+                "country",
+                "timezone_id",
+                "administrative_area_level_1",
+                "administrative_area_level_2",
+                "formatted_address",
+                "timezone_offset"
+              ]
             },
             "ticket_categories": {
               "type": "array",
@@ -5968,7 +6689,8 @@
                     "type": "integer"
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "amount": {
                     "type": "integer"
@@ -5985,7 +6707,16 @@
                   "taken_amount": {
                     "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "amount",
+                  "price",
+                  "is_featured",
+                  "is_ended",
+                  "taken_amount"
+                ]
               }
             },
             "orders": {
@@ -5997,13 +6728,16 @@
                     "type": "integer"
                   },
                   "first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "order_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "is_manual_registration": {
                     "type": "boolean"
@@ -6020,18 +6754,35 @@
                           "type": "integer"
                         },
                         "ticket_category_name": {
-                          "type": "string"
+                          "type": "string",
+                          "minLength": 1
                         }
-                      }
+                      },
+                      "required": [
+                        "amount",
+                        "ticket_category_name"
+                      ]
                     }
                   },
                   "status": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   },
                   "cancelled_date": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
-                }
+                },
+                "required": [
+                  "id",
+                  "first_name",
+                  "last_name",
+                  "order_date",
+                  "is_manual_registration",
+                  "is_unpaid_bank_transfer",
+                  "tickets",
+                  "status"
+                ]
               }
             },
             "participants_count": {
@@ -6044,10 +6795,12 @@
               "type": "integer"
             },
             "invoices_archive_url": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "participants_excel_url": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "show_event_created_hint": {
               "type": "boolean"
@@ -6055,7 +6808,26 @@
             "show_email_campaign_promotion": {
               "type": "boolean"
             }
-          }
+          },
+          "required": [
+            "event_type",
+            "id",
+            "title",
+            "start_date",
+            "end_date",
+            "status",
+            "amount",
+            "has_order_with_booking_approval",
+            "address",
+            "ticket_categories",
+            "orders",
+            "participants_count",
+            "total_revenue",
+            "manual_revenue",
+            "participants_excel_url",
+            "show_event_created_hint",
+            "show_email_campaign_promotion"
+          ]
         },
         "_links": {
           "type": "object",
@@ -6064,12 +6836,30 @@
               "type": "object",
               "properties": {
                 "href": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 1
                 }
-              }
+              },
+              "required": [
+                "href"
+              ]
             }
-          }
+          },
+          "required": [
+            "self"
+          ]
         }
+      },
+      "required": [
+        "response_status",
+        "developer_message",
+        "user_message",
+        "data",
+        "_links"
+      ]
+    }
+  }
+}
       }
     },
     "OrganizerContactsPutRequest": {
