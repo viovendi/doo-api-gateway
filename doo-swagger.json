@@ -2,9 +2,23 @@
   "swagger": "2.0",
   "info": {
     "version": "1.1.0",
-    "title": "doo API Documentation",
-    "description": "doo API Documentation"
+    "title": "doo",
+    "description": "doo API Documentation",
+    "contact": {
+      "name": "doo API Support",
+      "email": "kundenservice@doo.net"
+    }
   },
+  "servers": [
+    {
+      "url": "https://integration.doo.net/v1",
+      "description": "Production Server"
+    },
+    {
+      "url": "https://integration.doo.net/staging",
+      "description": "Staging Server"
+    }
+  ],
   "host": "integration.doo.net",
   "basePath": "/v1",
   "tags": [
