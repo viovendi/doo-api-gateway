@@ -1032,6 +1032,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/OauthZapierPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "400": {
             "description": "400 response",
             "schema": {
@@ -1053,6 +1064,12 @@
           "responses": {
             "200": {
               "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))\n{\"access_token\":\"$inputRoot.data.access_token\",\"refresh_token\":\"$inputRoot.data.refresh_token\"}"
+              }
+            },
+            "201": {
+              "statusCode": "201",
               "responseTemplates": {
                 "application/json": "#set($inputRoot = $input.path('$'))\n{\"access_token\":\"$inputRoot.data.access_token\",\"refresh_token\":\"$inputRoot.data.refresh_token\"}"
               }
