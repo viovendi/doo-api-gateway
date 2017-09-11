@@ -2,7 +2,7 @@
   "name": "doo-api-gateway",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/spectacle-docs/bin/spectacle.js -d doo-swagger.json --logo-file doo.png --target-dir dist"
+    "build": "node ./node_modules/spectacle-docs/bin/spectacle.js -d doo-swagger.json --logo-file doo.png --target-dir dist"
   },
   "dependencies": {
     "spectacle-docs": "^0.8.2"
