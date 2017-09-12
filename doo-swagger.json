@@ -2841,6 +2841,9 @@
           "type": "string",
           "minLength": 1,
           "description": "User ID in the external system (used in webhooks)"
+        },
+        "readonly_prefill": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -2893,7 +2896,8 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "readonly_prefill"
       ]
     },
     "QrcodesHashGetResponse": {
@@ -3107,8 +3111,7 @@
           "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "boolean",
-          "minLength": 1
+          "type": "boolean"
         },
         "total_event_capacity": {
           "type": "string",
@@ -3693,6 +3696,9 @@
           "required": [
             "self"
           ]
+        },
+        "readonly_prefill": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -3734,7 +3740,8 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "readonly_prefill"
       ]
     },
     "OauthZapierPostRequest": {

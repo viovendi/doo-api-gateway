@@ -1,2 +1,1 @@
-- To generate webpage from `doo-swagger.json` run `make build-docs`
-- Then deploy everything from `dist` folder to S3 `dev.doo.net` bucket.
+Check `Makefile` to get more details about available operations
