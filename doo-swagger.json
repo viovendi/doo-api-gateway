@@ -3651,6 +3651,9 @@
           "required": [
             "self"
           ]
+        },
+        "readonly_prefill": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -3692,7 +3695,8 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "readonly_prefill"
       ]
     },
     "OauthZapierPostRequest": {
