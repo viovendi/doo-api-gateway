@@ -2,6 +2,7 @@ SHELL:=/bin/bash
 
 # Current AWS profile
 AWS_PROFILE=doo
+export AWS_PROFILE
 
 #
 # To deploy API docs:
