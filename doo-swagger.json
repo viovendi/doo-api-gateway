@@ -916,6 +916,17 @@
                 "type": "string"
               }
             }
+          },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/OauthPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
           }
         },
         "security": [
@@ -925,15 +936,21 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
             }
           },
           "uri": "https://${stageVariables.ApiUrl}/oauth",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "POST",
           "type": "http_proxy"
         }
@@ -1510,7 +1527,7 @@
             "integration.request.path.hash": "method.request.path.hash"
           },
           "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "GET",
           "type": "http_proxy"
         }
@@ -1623,6 +1640,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "401": {
             "description": "401 response",
             "schema": {
@@ -1664,15 +1692,18 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200"
+            },
+            "201": {
+              "statusCode": "201"
             }
           },
           "requestParameters": {
             "integration.request.path.hash": "method.request.path.hash"
           },
           "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}/checkin",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "POST",
           "type": "http_proxy"
         }
@@ -1785,6 +1816,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "405": {
             "description": "405 response",
             "schema": {
@@ -1804,8 +1846,11 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200"
+            },
+            "201": {
+              "statusCode": "201"
             }
           },
           "requestParameters": {
