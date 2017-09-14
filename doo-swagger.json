@@ -1519,11 +1519,8 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "200": {
+            "default": {
               "statusCode": "200"
-            },
-            "201": {
-              "statusCode": "201"
             }
           },
           "requestParameters": {
@@ -1644,7 +1641,7 @@
             }
           },
           "201": {
-            "description": "200 response",
+            "description": "201 response",
             "schema": {
               "$ref": "#/definitions/CommonStatusResponse"
             },
@@ -1849,8 +1846,11 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200"
+            },
+            "201": {
+              "statusCode": "201"
             }
           },
           "requestParameters": {
