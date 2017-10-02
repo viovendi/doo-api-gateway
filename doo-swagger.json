@@ -39,6 +39,10 @@
       "description": "Everything about Organizers"
     },
     {
+      "name": "contacts",
+      "description": "contact to organizations"
+    },
+    {
       "name": "qrcodes",
       "description": "Everything about QRCodes"
     }
@@ -141,6 +145,112 @@
           "uri": "https://${stageVariables.ApiUrl}/events",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "post": {
+        "tags": [
+          "events"
+        ],
+        "description": "Creating an event",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "EventsPostRequest",
+            "description": "Requst body for event creation",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EventsPostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/EventsPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
           "type": "http_proxy"
         }
       },
@@ -1371,9 +1481,666 @@
         }
       },
       "options": {
-        "tags": [
-          "organizers"
+        "tags": ["organizers"],
+        "consumes": [
+          "application/json"
         ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/organizers/{organizer_id}/contacts/upload": {
+      "post": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Upload contacts CSV files",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "organizer_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contacts_file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "contacts_file_encoding",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/UploadContactsPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contacts/upload",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "contacts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/organizers/{organizer_id}/contacts/{hash}": {
+      "put": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Creating background task for contacts import",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "organizer_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "OrganizerContactsPutRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrganizerContactsPutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contacts/{hash}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "PUT",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "contacts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/organization/{organizer_id}/contact_custom_field": {
+      "post": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Creating contact custom field",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "organizer_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "OrganizerContactsPutRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactCustomFieldsPostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/ContactCustomFieldsResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contact_custom_field",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "type": "http_proxy"
+        }
+      },
+      "get": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Get contact custom fields",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "organizer_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/ContactCustomFieldsGetCollectionResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contact_custom_field",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "contacts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
+    },
+    "/organization/{organizer_id}/contact_custom_field/{id}": {
+      "get": {
+        "tags": [
+          "contacts"
+        ],
+        "summary": "Get contact custom field",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "organizer_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "current|[0-9]+"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "current",
+            "pattern": "[0-9]+"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/ContactCustomFieldsResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "uri": "https://${stageVariables.ApiUrl}/organizers/${organizer_id}/contact_custom_field/{id}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "options": {
+        "tags": [
+          "contacts"],
         "consumes": [
           "application/json"
         ],
@@ -4504,6 +5271,306 @@
         "page"
       ]
     },
+    "EventsPostRequest": {
+      "properties": {
+        "address": {
+          "properties": {
+            "administrative_area_level_1": {
+              "type": "string",
+              "minLength": 1
+            },
+            "administrative_area_level_2": {
+              "type": "string",
+              "minLength": 1
+            },
+            "administrative_area_level_3": {
+              "type": "string",
+              "minLength": 0
+            },
+            "administrative_area_level_4": {
+              "type": "string",
+              "minLength": 0
+            },
+            "administrative_area_level_5": {
+              "type": "string",
+              "minLength": 0
+            },
+            "city": {
+              "type": "string",
+              "minLength": 1
+            },
+            "country": {
+              "type": "string",
+              "minLength": 1
+            },
+            "formatted_address": {
+              "type": "string",
+              "minLength": 1
+            },
+            "latitude": {
+              "type": "string",
+              "minLength": 1
+            },
+            "longitude": {
+              "type": "string",
+              "minLength": 1
+            },
+            "place_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "postcode": {
+              "type": "string",
+              "minLength": 1
+            },
+            "route": {
+              "type": "string",
+              "minLength": 1
+            },
+            "street_address": {
+              "type": "string",
+              "minLength": 1
+            },
+            "street_number": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sublocality_level_1": {
+              "type": "string",
+              "minLength": 0
+            },
+            "sublocality_level_2": {
+              "type": "string",
+              "minLength": 0
+            },
+            "sublocality_level_3": {
+              "type": "string",
+              "minLength": 0
+            },
+            "sublocality_level_4": {
+              "type": "string",
+              "minLength": 0
+            },
+            "sublocality_level_5": {
+              "type": "string",
+              "minLength": 0
+            },
+            "timezone_id": {
+              "type": "string",
+              "minLength": 0
+            }
+          },
+          "type": "object",
+          "required": [
+            "administrative_area_level_1",
+            "administrative_area_level_2",
+            "administrative_area_level_3",
+            "administrative_area_level_4",
+            "administrative_area_level_5",
+            "city",
+            "country",
+            "formatted_address",
+            "latitude",
+            "place_id",
+            "postcode",
+            "route",
+            "street_address",
+            "street_number",
+            "sublocality_level_1",
+            "sublocality_level_2",
+            "sublocality_level_3",
+            "sublocality_level_4",
+            "sublocality_level_5",
+            "timezone_id"
+          ]
+        },
+        "contact": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 0
+            },
+            "organization": {
+              "type": "string",
+              "minLength": 0
+            },
+            "phone": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "type": "object",
+          "required": [
+            "email",
+            "phone"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "event_attributes": {
+          "properties": {
+            "attributes": {
+              "items": {
+                "properties": {
+                  "controlling": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "default": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "type": "null"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "order": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "template": {
+                    "type": "boolean"
+                  },
+                  "template_id": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "type": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "controlling",
+                  "data",
+                  "default",
+                  "id",
+                  "name",
+                  "order",
+                  "template",
+                  "template_id",
+                  "type"
+                ]
+              },
+              "type": "array"
+            },
+            "templates": {
+              "items": {},
+              "type": "array"
+            }
+          },
+          "type": "object",
+          "required": [
+            "items"
+          ]
+        },
+        "image_cover_id": {
+          "type": "string",
+          "minLength": 0
+        },
+        "image_id": {
+          "type": "string",
+          "minLength": 0
+        },
+        "image_shape_type": {
+          "type": "string",
+          "enum": [
+            "square",
+            "horizontal",
+            null
+          ]
+        },
+        "short_description": {
+          "type": "string",
+          "minLength": 0
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "venue_address": {
+          "type": "string",
+          "minLength": 0
+        },
+        "venue_name": {
+          "type": "string",
+          "minLength": 0
+        }
+      },
+      "type": "object",
+      "required": [
+        "address",
+        "contact",
+        "end_date",
+        "event_attributes",
+        "image_cover_id",
+        "image_id",
+        "image_shape_type",
+        "short_description",
+        "start_date",
+        "title",
+        "venue_address",
+        "venue_name"
+      ]
+    },
+    "EventsPostResponse": {
+      "properties": {
+        "data": {
+          "properties": {
+            "event_id": {
+              "type": "string",
+              "pattern": "[0-9]+"
+            }
+          },
+          "type": "object",
+          "required": [
+            "event_id"
+          ]
+        },
+        "developer_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "response_status": {
+          "type": "integer",
+          "minimum": 0,
+          "enum": [
+            200
+          ]
+        },
+        "user_message": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "developer_message",
+        "response_status",
+        "user_message"
+      ]
+    },
     "OrdersIdGetResponse": {
       "type": "object",
       "description": "",
@@ -5062,144 +6129,88 @@
         }
       }
     },
-    "EventsIdAttendeesGetResponse": {
-      "type": "object",
-      "description": "",
-      "properties": {
-        "_links": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "href"
-              ]
-            },
-            "last": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "href"
-              ]
-            },
-            "self": {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "href"
-              ]
-            }
-          },
-          "required": [
-            "first",
-            "last",
-            "self"
-          ]
+    "UploadContactsPostResponse": {
+      "allOf": [
+        {
+          "$ref": "_hal.json#/definitions/LinkSchemaSingle"
         },
-        "_embedded": {
+        {
+          "$ref": "_hal.json#/definitions/ResponseSchema"
+        },
+        {
+          "$ref": "_contacts.json#/definitions/OrganizerContactsSchema"
+        }
+      ]
+    },
+    "EventsIdAttendeesGetResponse": {
+      "allOf": [
+        {
+          "$ref": "_hal.json#/definitions/LinkSchemaComplex"
+        },
+        {
           "type": "object",
           "properties": {
-            "attendees": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "attendee_first_name": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "attendee_id": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "attendee_last_name": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "attendee_status": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "buyer_first_name": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "buyer_last_name": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "category_id": {
-                    "type": "integer"
-                  },
-                  "category_name": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "is_checked": {
-                    "type": "boolean"
-                  },
-                  "order_id": {
-                    "type": "integer"
-                  },
-                  "ticket_hash": {
-                    "type": "string",
-                    "minLength": 1
+            "_embedded": {
+              "type": "object",
+              "properties": {
+                "attendees": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "attendee_first_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attendee_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attendee_last_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attendee_status": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "buyer_first_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "buyer_last_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "category_id": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "category_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "is_checked": {
+                        "type": "boolean"
+                      },
+                      "order_id": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "ticket_hash": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
                   }
-                },
-                "required": [
-                  "attendee_id",
-                  "attendee_status",
-                  "buyer_first_name",
-                  "buyer_last_name",
-                  "category_id",
-                  "category_name",
-                  "is_checked",
-                  "order_id",
-                  "ticket_hash"
-                ]
+                }
               }
             }
-          },
-          "required": [
-            "attendees"
-          ]
+          }
         },
-        "page": {
-          "type": "integer"
-        },
-        "page_count": {
-          "type": "integer"
-        },
-        "page_size": {
-          "type": "integer"
-        },
-        "total_items": {
-          "type": "integer"
+        {
+          "$ref": "_hal.json#/definitions/PageSchema"
         }
-      },
-      "required": [
-        "_links",
-        "_embedded",
-        "page",
-        "page_count",
-        "page_size",
-        "total_items"
       ]
     },
     "OrganizersCurrentGetResponse": {
@@ -5925,6 +6936,103 @@
         "data",
         "_links"
       ]
+    }
+  }
+}
+      }
+    },
+    "OrganizerContactsPutRequest": {
+      "type": "object",
+      "properties": {
+        "contact_fields": {
+          "items": {
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 0
+              },
+              "value": {
+                "type": "string",
+                "minLength": 0
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "contact_group_id": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "default",
+            "overwrite",
+            "skip_existing"
+          ]
+        },
+        "original_filename": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "contact_fields",
+        "contact_group_id",
+        "mode",
+        "original_filename"
+      ]
+    },
+    "ContactCustomFieldsPostRequest": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50
+        }
+      },
+      "type": "object",
+      "required": [
+        "name"
+      ]
+    },
+    "ContactCustomFieldsResponse": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "organization_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "field_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50
+        }
+      },
+      "type": "object",
+      "required": [
+        "id",
+        "organization_id",
+        "field_name"
+      ]
+    },
+    "ContactCustomFieldsGetCollectionResponse": {
+      "properties": {
+        "data": {
+          "items": {
+            "allOf": {
+              "$ref": "#/definitions/CustomFieldsPostResponse"
+            }
+          }
+        }
+      }
     }
   }
 }
