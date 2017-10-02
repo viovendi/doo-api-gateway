@@ -9,16 +9,6 @@
       "email": "kundenservice@doo.net"
     }
   },
-  "servers": [
-    {
-      "url": "https://integration.doo.net/v1",
-      "description": "Production Server"
-    },
-    {
-      "url": "https://integration.doo.net/staging",
-      "description": "Staging Server"
-    }
-  ],
   "host": "integration.doo.net",
   "basePath": "/v1",
   "tags": [
@@ -6606,6 +6596,7 @@
         "_links"
       ]
     },
+
     "EventsIdDetailsGetResponse": {
       "type": "object",
       "description": "",
@@ -6936,11 +6927,8 @@
         "data",
         "_links"
       ]
-    }
-  }
-}
-      }
     },
+
     "OrganizerContactsPutRequest": {
       "type": "object",
       "properties": {
