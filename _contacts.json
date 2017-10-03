@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "OrganizerContactsSchema": {
+      "type": "object",
+      "properties": {
+        "import_hash": {
+          "type": "string"
+        },
+        "imported_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contact_fields": {
+          "$ref": "#/definitions/ContactFieldsSchema"
+        },
+        "contact_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "_contact_groups.json#/definitions/OrganizerContactGroupsSingleSchema"
+          }
+        }
+      }
+    },
+    "ContactFieldsSchema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "map_to": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
