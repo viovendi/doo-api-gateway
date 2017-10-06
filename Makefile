@@ -33,3 +33,14 @@ api-update:
 # Deploy API configuration to specified stage
 api-deploy:
 	aws apigateway create-deployment --rest-api-id s39cilwfik --stage-name $(STAGE) --description '$(DESCRIPTION)' --region eu-central-1
+
+#
+# Additional commands
+#
+
+version-show:
+	git tag
+
+version-add:
+	git tag $(VERSION)
+	git push origin --tags
