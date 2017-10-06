@@ -5538,6 +5538,10 @@
         "disabled_guided_tour": {
           "type": "boolean"
         },
+        "account_language": {
+          "type": "string",
+          "minLength": 1
+        },
         "_links": {
           "type": "object",
           "properties": {
