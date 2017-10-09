@@ -2069,8 +2069,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "200 response",
+          "201": {
+            "description": "201 response",
             "schema": {
               "$ref": "#/definitions/WebhooksPostResponse"
             },
@@ -2111,7 +2111,7 @@
         "x-amazon-apigateway-integration": {
           "responses": {
             "default": {
-              "statusCode": "200",
+              "statusCode": "201",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
@@ -2255,7 +2255,7 @@
         "x-amazon-apigateway-integration": {
           "responses": {
             "default": {
-              "statusCode": "200",
+              "statusCode": "204",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
