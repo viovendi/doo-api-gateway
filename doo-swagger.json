@@ -1922,6 +1922,7 @@
         "tags": [
           "webhooks"
         ],
+        "summary": "Get webhook collection",
         "description": "Expose a list of configured Webhook Groups for the authenticated user.",
         "consumes": [
           "application/json"
@@ -1971,10 +1972,21 @@
           "200": {
             "description": "200 response",
             "schema": {
-              "$ref": "#/definitions/WebhookCollectionGetResponse"
+              "$ref": "#/definitions/WebhooksGetResponse"
             },
             "headers": {
               "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
                 "type": "string"
               }
             }
@@ -1992,6 +2004,12 @@
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Content-Type": "application/problem+json"
+              }
             }
           },
           "uri": "https://${stageVariables.ApiUrl}/webhooks",
@@ -2004,6 +2022,7 @@
         "tags": [
           "webhooks"
         ],
+        "summary": "Create a webhook",
         "description": "Add a webhook group record.",
         "consumes": [
           "application/json"
@@ -2035,13 +2054,6 @@
             "type": "string"
           },
           {
-            "name": "Content-Type",
-            "in": "header",
-            "description": "Default `application/json`",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "x-api-key",
             "in": "header",
             "description": "API Key",
@@ -2052,7 +2064,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/WebhookCollectionPostRequest"
+              "$ref": "#/definitions/WebhooksPostRequest"
             }
           }
         ],
@@ -2060,11 +2072,33 @@
           "200": {
             "description": "200 response",
             "schema": {
-              "$ref": "#/definitions/WebhookCollectionPostResponse"
+              "$ref": "#/definitions/WebhooksPostResponse"
             },
             "headers": {
               "Access-Control-Allow-Origin": {
                 "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "application/problem+json"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "application/problem+json"
               }
             }
           }
@@ -2080,6 +2114,18 @@
               "statusCode": "200",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Content-Type": "application/problem+json"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Content-Type": "application/problem+json"
               }
             }
           },
@@ -2140,11 +2186,12 @@
         }
       }
     },
-    "/webhooks/{webhookId}": {
+    "/webhooks/{id}": {
       "delete": {
         "tags": [
           "webhooks"
         ],
+        "summary": "Delete a webhook",
         "description": "Delete a webhook group record.",
         "consumes": [
           "application/json"
@@ -2155,7 +2202,7 @@
         ],
         "parameters": [
           {
-            "name": "webhookId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -2170,7 +2217,34 @@
         ],
         "responses": {
           "204": {
-            "description": "204 response"
+            "description": "204 response",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
           }
         },
         "security": [
@@ -2185,11 +2259,26 @@
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
+            },
+            "400": {
+              "statusCode": "400",
+              "responseParameters": {
+                "method.response.header.Content-Type": "application/problem+json"
+              }
+            },
+            "500": {
+              "statusCode": "500",
+              "responseParameters": {
+                "method.response.header.Content-Type": "application/problem+json"
+              }
             }
           },
-          "uri": "https://${stageVariables.ApiUrl}/webhooks/{webhookId}",
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/webhooks/{id}",
           "passthroughBehavior": "when_no_match",
-          "httpMethod": "POST",
+          "httpMethod": "DELETE",
           "type": "http_proxy"
         }
       }
@@ -2786,7 +2875,8 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
                 },
                 "additional_questions": {
@@ -2808,7 +2898,8 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                   }
                 },
                 "additional_questions": {
@@ -6207,15 +6298,17 @@
         "_links"
       ]
     },
-    "WebhookCollectionPostRequest": {
+    "WebhooksPostRequest": {
       "type": "object",
       "properties": {
         "user": {
           "type": "string",
+          "minLength": 1,
           "required": true
         },
         "description": {
           "type": "string",
+          "minLength": 1,
           "required": true
         },
         "hooks": {
@@ -6226,45 +6319,57 @@
             "properties": {
               "type": {
                 "type": "string",
-                "required": true
+                "minLength": 1
               },
               "method": {
                 "type": "string",
-                "required": true
+                "minLength": 1
               },
               "endpoint": {
+                "format": "uri",
                 "type": "string",
-                "required": true
+                "minLength": 1
               }
-            }
+            },
+            "required": [
+              "type",
+              "method",
+              "endpoint"
+            ]
           }
         },
         "authentication": {
           "type": "object",
           "properties": {
             "grant_type": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "endpoint": {
+              "format": "uri",
               "type": "string",
-              "required": true
+              "minLength": 1
             },
             "credentials": {
               "type": "object"
             },
             "header_format": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "header_value_format": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          }
+          },
+          "required": [
+            "endpoint"
+          ]
         }
       }
     },
-    "WebhookCollectionPostResponse": {
+    "WebhooksPostResponse": {
       "type": "object",
-      "description": "",
       "properties": {
         "_links": {
           "type": "object",
@@ -6284,16 +6389,20 @@
           }
         },
         "response_status": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "developer_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "user_message": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "data": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -6304,7 +6413,7 @@
         "data"
       ]
     },
-    "WebhookCollectionGetResponse": {
+    "WebhooksGetResponse": {
       "type": "object",
       "properties": {
         "_links": {
@@ -6385,14 +6494,17 @@
                 "properties": {
                   "id": {
                     "type": "string",
+                    "minLength": 1,
                     "required": true
                   },
                   "user": {
                     "type": "string",
+                    "minLength": 1,
                     "required": true
                   },
                   "description": {
                     "type": "string",
+                    "minLength": 1,
                     "required": true
                   },
                   "hooks": {
@@ -6403,14 +6515,18 @@
                       "properties": {
                         "type": {
                           "type": "string",
+                          "minLength": 1,
                           "required": true
                         },
                         "method": {
                           "type": "string",
+                          "minLength": 1,
                           "required": true
                         },
                         "endpoint": {
+                          "format": "uri",
                           "type": "string",
+                          "minLength": 1,
                           "required": true
                         }
                       }
@@ -6420,20 +6536,25 @@
                     "type": "object",
                     "properties": {
                       "grant_type": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "endpoint": {
+                        "format": "uri",
                         "type": "string",
+                        "minLength": 1,
                         "required": true
                       },
                       "credentials": {
                         "type": "object"
                       },
                       "header_format": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       },
                       "header_value_format": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                       }
                     }
                   }
