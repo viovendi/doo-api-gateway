@@ -2308,7 +2308,8 @@
         },
         "status": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "Possible values: draft, live, cancelled, done"
         },
         "total_amount": {
           "type": "number"
@@ -4663,7 +4664,8 @@
             },
             "status": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "description": "Possible values: active, pending_organizer_review, pending_organizer_approval, organizer_cancelled, organizer_accepted_cancellation, denied, removed"
             },
             "cancellation_date": {
               "type": "string",
