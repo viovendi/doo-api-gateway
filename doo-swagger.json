@@ -1980,6 +1980,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/WebhooksGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "500": {
             "description": "500 response",
             "schema": {
@@ -2001,6 +2012,12 @@
           "responses": {
             "default": {
               "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
@@ -2069,6 +2086,17 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/WebhooksPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "201": {
             "description": "201 response",
             "schema": {
@@ -2111,6 +2139,12 @@
         "x-amazon-apigateway-integration": {
           "responses": {
             "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
               "statusCode": "201",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
