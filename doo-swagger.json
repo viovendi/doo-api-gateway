@@ -1980,17 +1980,6 @@
               }
             }
           },
-          "201": {
-            "description": "201 response",
-            "schema": {
-              "$ref": "#/definitions/WebhooksGetResponse"
-            },
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              }
-            }
-          },
           "500": {
             "description": "500 response",
             "schema": {
@@ -2009,26 +1998,6 @@
           }
         ],
         "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            },
-            "201": {
-              "statusCode": "201",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            },
-            "500": {
-              "statusCode": "500",
-              "responseParameters": {
-                "method.response.header.Content-Type": "application/problem+json"
-              }
-            }
-          },
           "uri": "https://${stageVariables.ApiUrl}/webhooks",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
@@ -2137,86 +2106,10 @@
           }
         ],
         "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            },
-            "201": {
-              "statusCode": "201",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            },
-            "400": {
-              "statusCode": "400",
-              "responseParameters": {
-                "method.response.header.Content-Type": "application/problem+json"
-              }
-            },
-            "500": {
-              "statusCode": "500",
-              "responseParameters": {
-                "method.response.header.Content-Type": "application/problem+json"
-              }
-            }
-          },
           "uri": "https://${stageVariables.ApiUrl}/webhooks",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
           "type": "http_proxy"
-        }
-      },
-      "options": {
-        "tags": [
-          "webhooks"
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json",
-          "application/hal+json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ],
-        "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Methods": "'GET,OPTIONS'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            }
-          },
-          "requestTemplates": {
-            "application/json": "{\"statusCode\": 200}"
-          },
-          "passthroughBehavior": "when_no_match",
-          "type": "mock"
         }
       }
     },
@@ -2287,26 +2180,6 @@
           }
         ],
         "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "204",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            },
-            "400": {
-              "statusCode": "400",
-              "responseParameters": {
-                "method.response.header.Content-Type": "application/problem+json"
-              }
-            },
-            "500": {
-              "statusCode": "500",
-              "responseParameters": {
-                "method.response.header.Content-Type": "application/problem+json"
-              }
-            }
-          },
           "requestParameters": {
             "integration.request.path.id": "method.request.path.id"
           },
