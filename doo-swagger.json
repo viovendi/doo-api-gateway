@@ -5019,7 +5019,8 @@
         },
         "external_customer_id":{
           "type": "string",
-          "maxLength": 255
+          "maxLength": 255,
+          "minLength": 0
         },
         "_links": {
           "type": "object",
