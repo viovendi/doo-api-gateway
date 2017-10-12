@@ -2782,8 +2782,7 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                   }
                 },
                 "additional_questions": {
@@ -2805,8 +2804,7 @@
                 "default_questions": {
                   "type": "array",
                   "items": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                   }
                 },
                 "additional_questions": {
@@ -6208,72 +6206,29 @@
     "WebhooksPostRequest": {
       "type": "object",
       "required": [
-        "user",
+        "name",
         "description",
         "hooks"
       ],
       "properties": {
-        "user": {
+        "name": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 255
         },
         "description": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 255
         },
         "hooks": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "minLength": 1
-              },
-              "method": {
-                "type": "string",
-                "minLength": 1
-              },
-              "endpoint": {
-                "format": "uri",
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "type",
-              "method",
-              "endpoint"
-            ]
+            "$ref": "#/definitions/WebhooksCommonWebhookItem"
           }
         },
         "authentication": {
-          "type": "object",
-          "properties": {
-            "grant_type": {
-              "type": "string",
-              "minLength": 1
-            },
-            "endpoint": {
-              "format": "uri",
-              "type": "string",
-              "minLength": 1
-            },
-            "credentials": {
-              "type": "object"
-            },
-            "header_format": {
-              "type": "string",
-              "minLength": 1
-            },
-            "header_value_format": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "required": [
-            "endpoint"
-          ]
+          "$ref": "#/definitions/WebhooksCommonParameterAuthentication"
         }
       }
     },
@@ -6288,7 +6243,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 1000
                 }
               },
               "required": [
@@ -6299,19 +6255,23 @@
         },
         "response_status": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 1000
         },
         "developer_message": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 1000
         },
         "user_message": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 1000
         },
         "data": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 1000
         }
       },
       "required": [
@@ -6333,7 +6293,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 1000
                 }
               },
               "required": [
@@ -6345,7 +6306,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 255
                 }
               },
               "required": [
@@ -6357,7 +6319,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 255
                 }
               },
               "required": [
@@ -6369,7 +6332,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 255
                 }
               },
               "required": [
@@ -6381,7 +6345,8 @@
               "properties": {
                 "href": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 255
                 }
               },
               "required": [
@@ -6409,95 +6374,149 @@
                 "type": "object",
                 "required": [
                   "id",
-                  "user",
+                  "name",
                   "description",
                   "hooks"
                 ],
                 "properties": {
                   "id": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "maxLength": 36
                   },
-                  "user": {
+                  "name": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "maxLength": 200
                   },
                   "description": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "maxLength": 255
                   },
                   "hooks": {
                     "type": "array",
                     "items": {
-                      "type": "object",
-                      "required": [
-                        "type",
-                        "method",
-                        "endpoint"
-                      ],
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "method": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "endpoint": {
-                          "format": "uri",
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
+                      "$ref": "#/definitions/WebhooksCommonWebhookItem"
                     }
                   },
                   "authentication": {
-                    "type": "object",
-                    "required": [
-                      "endpoint"
-                    ],
-                    "properties": {
-                      "grant_type": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "endpoint": {
-                        "format": "uri",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "credentials": {
-                        "type": "object"
-                      },
-                      "header_format": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "header_value_format": {
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    }
+                    "$ref": "#/definitions/WebhooksCommonParameterAuthentication"
                   }
                 }
               }
             },
             "page_count": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": "1"
             },
             "page_size": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": "25"
             },
             "total_items": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": "1"
             },
             "page": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": "1"
             }
           }
         }
       }
+    },
+    "WebhooksCommonParameterAuthentication" : {
+      "type": "object",
+      "required": [
+        "endpoint"
+      ],
+      "properties": {
+        "grant_type": {
+          "description": "OAuth2 grant_type",
+          "examples": [
+            "client_credentials",
+            "password"
+          ],
+          "type": "string",
+          "minLength": 1,
+          "maxLenght": 100
+        },
+        "endpoint": {
+          "description": "Authorization endpoint URI",
+          "format": "uri",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "credentials": {
+          "description": "Credentials appropriate to OAuth2 grant_type",
+          "type": "object"
+        },
+        "header_format": {
+          "description": "Additional header used for access_token",
+          "examples": [
+            "Oauth-Token",
+            "Authorization"
+          ],
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "header_value_format": {
+          "description": "Value with placeholder for header used for access_token",
+          "pattern": "^.*\\%ACCESS_TOKEN\\%.*$",
+          "examples": [
+            "Bearer %ACCESS_TOKEN%",
+            "%ACCESS_TOKEN%"
+          ],
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "WebhooksCommonWebhookItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "enum": [
+            "event_created",
+            "event_removed",
+            "event_updated",
+            "order_cancelled",
+            "order_created",
+            "order_removed",
+            "order_updated"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10,
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "endpoint": {
+          "format": "uri",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "type",
+        "method",
+        "endpoint"
+      ]
     }
   }
 }
