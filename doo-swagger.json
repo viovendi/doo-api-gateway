@@ -6408,19 +6408,19 @@
             },
             "page_count": {
               "type": "integer",
-              "minimum": "1"
+              "minimum": 1
             },
             "page_size": {
               "type": "integer",
-              "minimum": "25"
+              "minimum": 25
             },
             "total_items": {
               "type": "integer",
-              "minimum": "1"
+              "minimum": 1
             },
             "page": {
               "type": "integer",
-              "minimum": "1"
+              "minimum": 1
             }
           }
         }
@@ -6434,10 +6434,7 @@
       "properties": {
         "grant_type": {
           "description": "OAuth2 grant_type",
-          "examples": [
-            "client_credentials",
-            "password"
-          ],
+          "example": "client_credentials",
           "type": "string",
           "minLength": 1,
           "maxLenght": 100
@@ -6451,14 +6448,15 @@
         },
         "credentials": {
           "description": "Credentials appropriate to OAuth2 grant_type",
-          "type": "object"
+          "type": "object",
+          "example": {
+            "client_id":"doo-webhook-user",
+            "client_secret":"doo-webhook-secret"
+          }
         },
         "header_format": {
           "description": "Additional header used for access_token",
-          "examples": [
-            "Oauth-Token",
-            "Authorization"
-          ],
+          "example": "Oauth-Token",
           "type": "string",
           "minLength": 1,
           "maxLength": 100
@@ -6466,10 +6464,7 @@
         "header_value_format": {
           "description": "Value with placeholder for header used for access_token",
           "pattern": "^.*\\%ACCESS_TOKEN\\%.*$",
-          "examples": [
-            "Bearer %ACCESS_TOKEN%",
-            "%ACCESS_TOKEN%"
-          ],
+          "example": "Bearer %ACCESS_TOKEN%",
           "type": "string",
           "minLength": 1,
           "maxLength": 100
