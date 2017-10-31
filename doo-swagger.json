@@ -49,6 +49,10 @@
     {
       "name": "campaigns_feedback",
       "description": "Everything about Email Campaign Feedback"
+    },
+    {
+      "name": "event_details",
+      "description": "Everything about Event Details"
     }
   ],
   "schemes": [
@@ -2256,6 +2260,264 @@
             "description": "200 response",
             "schema": {
               "$ref": "#/definitions/EmailCampaignsReInviteResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "401 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "404 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/webhooks/{id}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "DELETE",
+          "type": "http_proxy"
+        }
+      }
+    },
+    "/events/{event_id}/details": {
+      "post": {
+        "tags": [
+          "event_details"
+        ],
+        "summary": "Migrating event participants",
+        "description": "Assigning event participants into specific group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EventParticipantsMigrateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/EventParticipantsMigrateResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "401": {
+            "description": "401 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "403": {
+            "description": "403 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "404": {
+            "description": "404 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/webhooks/{id}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "DELETE",
+          "type": "http_proxy"
+        }
+      },
+      "put": {
+        "tags": [
+          "event_details"
+        ],
+        "summary": "Migrating event participants",
+        "description": "Deleting event participants from specific group",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EventParticipantsMigrateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/EventParticipantsDeleteResponse"
             },
             "headers": {
               "Content-Type": {
@@ -6727,7 +6989,147 @@
         },
         "response_status": {
           "default": 200,
+          "type": "integer",
+          "minimum": 0
+        },
+        "user_message": {
+          "default": "Success",
+          "description": "User message",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "data",
+        "developer_message",
+        "response_status",
+        "user_message",
+        "_links"
+      ]
+    },
+    "EventParticipantsMigrateRequest": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "description": "Specified group id where unconverted members will be migrated",
+          "minimum ": 1,
           "type": "integer"
+        }
+      },
+      "required": [
+        "group_id"
+      ]
+    },
+    "EventParticipantsMigrateResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "properties": {
+            "self": {
+              "properties": {
+                "href": {
+                  "default": "/events/{event_id}/details",
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "href"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "self"
+          ],
+          "type": "object"
+        },
+        "data": {
+          "properties": {
+            "migrated_count": {
+              "description": "Count of migrated contacts into specified group",
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "migrated_count"
+          ],
+          "type": "object"
+        },
+        "developer_message": {
+          "default": "Success",
+          "description": "Developer message",
+          "type": "string",
+          "minLength": 1
+        },
+        "response_status": {
+          "default": 200,
+          "type": "integer",
+          "minimum": 0
+        },
+        "user_message": {
+          "default": "Success",
+          "description": "User message",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "data",
+        "developer_message",
+        "response_status",
+        "user_message",
+        "_links"
+      ]
+    },
+    "EventParticipantsDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "properties": {
+            "self": {
+              "properties": {
+                "href": {
+                  "default": "/events/{event_id}/details",
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "href"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "self"
+          ],
+          "type": "object"
+        },
+        "data": {
+          "properties": {
+            "deleted_count": {
+              "description": "Count of migrated contacts into specified group",
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "deleted_count"
+          ],
+          "type": "object"
+        },
+        "developer_message": {
+          "default": "Success",
+          "description": "Developer message",
+          "type": "string",
+          "minLength": 1
+        },
+        "response_status": {
+          "default": 200,
+          "type": "integer",
+          "minimum": 0
         },
         "user_message": {
           "default": "Success",
