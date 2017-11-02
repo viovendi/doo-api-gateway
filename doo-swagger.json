@@ -2606,8 +2606,14 @@
         ],
         "parameters": [
           {
-            "name": "event_id",
-            "in": "path",
+            "name": "group_id",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "members_id",
+            "in": "query",
             "required": true,
             "type": "string"
           },
@@ -2638,149 +2644,11 @@
             "description": "API Key",
             "required": false,
             "type": "string"
-          },
-          {
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EventParticipantsMigrateRequest"
-            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/EventParticipantsMigrateResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          },
-          "400": {
-            "description": "400 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          },
-          "401": {
-            "description": "401 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          },
-          "403": {
-            "description": "403 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          },
-          "404": {
-            "description": "404 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ],
-        "x-amazon-apigateway-integration": {
-          "requestParameters": {
-            "integration.request.path.id": "method.request.path.id"
-          },
-          "uri": "https://${stageVariables.ApiUrl}/webhooks/{id}",
-          "passthroughBehavior": "when_no_match",
-          "httpMethod": "DELETE",
-          "type": "http_proxy"
-        }
-      },
-      "put": {
-        "tags": [
-          "event_details"
-        ],
-        "summary": "Migrating event participants",
-        "description": "Deleting event participants from specific group",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json",
-          "application/hal+json"
-        ],
-        "parameters": [
-          {
-            "name": "event_id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "description": "Should be `Bearer access_token`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "description": "Default `application/json`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "description": "Default `application/json`",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "x-api-key",
-            "in": "header",
-            "description": "API Key",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/EventParticipantsMigrateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/EventParticipantsDeleteResponse"
-            },
+          "204": {
+            "description": "204 response",
             "headers": {
               "Content-Type": {
                 "type": "string"
