@@ -7534,14 +7534,6 @@
         "method",
         "endpoint"
       ]
-    }
-  }
-}
-
-    }
-  }
-}
-      }
     },
     "OrganizerContactsPutRequest": {
       "type": "object",
