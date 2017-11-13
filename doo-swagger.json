@@ -9,6 +9,16 @@
       "email": "kundenservice@doo.net"
     }
   },
+  "servers": [
+    {
+      "url": "https://integration.doo.net/v1",
+      "description": "Production Server"
+    },
+    {
+      "url": "https://integration.doo.net/staging",
+      "description": "Staging Server"
+    }
+  ],
   "host": "integration.doo.net",
   "basePath": "/v1",
   "tags": [
@@ -35,6 +45,10 @@
     {
       "name": "qrcodes",
       "description": "Everything about QRCodes"
+    },
+    {
+      "name": "webhooks",
+      "description": "Everything about Webhooks"
     }
   ],
   "schemes": [
@@ -1016,6 +1030,17 @@
                 "type": "string"
               }
             }
+          },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/OauthPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
           }
         },
         "security": [
@@ -1025,15 +1050,21 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            },
+            "201": {
+              "statusCode": "201",
               "responseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'"
               }
             }
           },
           "uri": "https://${stageVariables.ApiUrl}/oauth",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "POST",
           "type": "http_proxy"
         }
@@ -1146,6 +1177,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/OauthZapierPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "400": {
             "description": "400 response",
             "schema": {
@@ -1167,6 +1209,12 @@
           "responses": {
             "200": {
               "statusCode": "200",
+              "responseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))\n{\"access_token\":\"$inputRoot.data.access_token\",\"refresh_token\":\"$inputRoot.data.refresh_token\"}"
+              }
+            },
+            "201": {
+              "statusCode": "201",
               "responseTemplates": {
                 "application/json": "#set($inputRoot = $input.path('$'))\n{\"access_token\":\"$inputRoot.data.access_token\",\"refresh_token\":\"$inputRoot.data.refresh_token\"}"
               }
@@ -2250,7 +2298,7 @@
             "integration.request.path.hash": "method.request.path.hash"
           },
           "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "GET",
           "type": "http_proxy"
         }
@@ -2363,6 +2411,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "401": {
             "description": "401 response",
             "schema": {
@@ -2404,15 +2463,18 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200"
+            },
+            "201": {
+              "statusCode": "201"
             }
           },
           "requestParameters": {
             "integration.request.path.hash": "method.request.path.hash"
           },
           "uri": "https://${stageVariables.ApiUrl}/qrcodes/{hash}/checkin",
-          "passthroughBehavior": "when_no_match",
+          "passthroughBehavior": "when_no_templates",
           "httpMethod": "POST",
           "type": "http_proxy"
         }
@@ -2525,6 +2587,17 @@
               }
             }
           },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
           "405": {
             "description": "405 response",
             "schema": {
@@ -2544,8 +2617,11 @@
         ],
         "x-amazon-apigateway-integration": {
           "responses": {
-            "default": {
+            "200": {
               "statusCode": "200"
+            },
+            "201": {
+              "statusCode": "201"
             }
           },
           "requestParameters": {
@@ -2605,6 +2681,279 @@
           },
           "passthroughBehavior": "when_no_match",
           "type": "mock"
+        }
+      }
+    },
+    "/webhooks": {
+      "get": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Get webhook collection",
+        "description": "Expose a list of configured Webhook Groups for the authenticated user.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/WebhooksGetResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "uri": "https://${stageVariables.ApiUrl}/webhooks",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      },
+      "post": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Create a webhook",
+        "description": "Add a webhook group record.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WebhooksPostRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/WebhooksPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "201": {
+            "description": "201 response",
+            "schema": {
+              "$ref": "#/definitions/WebhooksPostResponse"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "uri": "https://${stageVariables.ApiUrl}/webhooks",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "POST",
+          "type": "http_proxy"
+        }
+      }
+    },
+    "/webhooks/{id}": {
+      "delete": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Delete a webhook",
+        "description": "Delete a webhook group record.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 response",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "500 response",
+            "schema": {
+              "$ref": "#/definitions/CommonStatusResponse"
+            },
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "requestParameters": {
+            "integration.request.path.id": "method.request.path.id"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/webhooks/{id}",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "DELETE",
+          "type": "http_proxy"
         }
       }
     }
@@ -3003,7 +3352,8 @@
         },
         "status": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "Possible values: draft, live, cancelled, done"
         },
         "total_amount": {
           "type": "number"
@@ -3536,6 +3886,9 @@
           "type": "string",
           "minLength": 1,
           "description": "User ID in the external system (used in webhooks)"
+        },
+        "readonly_prefill": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -3588,7 +3941,8 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "readonly_prefill"
       ]
     },
     "QrcodesHashGetResponse": {
@@ -3802,8 +4156,7 @@
           "minLength": 1
         },
         "duplicate_email_detection": {
-          "type": "boolean",
-          "minLength": 1
+          "type": "boolean"
         },
         "total_event_capacity": {
           "type": "string",
@@ -4388,6 +4741,9 @@
           "required": [
             "self"
           ]
+        },
+        "readonly_prefill": {
+          "type": "boolean"
         }
       },
       "required": [
@@ -4429,7 +4785,8 @@
         "ticket_categories",
         "participants_count",
         "show_bank_transfer",
-        "_links"
+        "_links",
+        "readonly_prefill"
       ]
     },
     "OauthZapierPostRequest": {
@@ -5651,7 +6008,8 @@
             },
             "status": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "description": "Possible values: active, pending_organizer_review, pending_organizer_approval, organizer_cancelled, organizer_accepted_cancellation, denied, removed"
             },
             "cancellation_date": {
               "type": "string",
@@ -6002,6 +6360,11 @@
           "required": [
             "use_company_name"
           ]
+        },
+        "external_customer_id":{
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 0
         },
         "_links": {
           "type": "object",
@@ -6470,6 +6833,10 @@
         "disabled_guided_tour": {
           "type": "boolean"
         },
+        "account_language": {
+          "type": "string",
+          "minLength": 1
+        },
         "_links": {
           "type": "object",
           "properties": {
@@ -6857,6 +7224,320 @@
         "data",
         "_links"
       ]
+    },
+    "WebhooksPostRequest": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "hooks"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "hooks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WebhooksCommonWebhookItem"
+          }
+        },
+        "authentication": {
+          "$ref": "#/definitions/WebhooksCommonParameterAuthentication"
+        }
+      }
+    },
+    "WebhooksPostResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          }
+        },
+        "response_status": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "developer_message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "user_message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "data": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "_links",
+        "response_status",
+        "developer_message",
+        "user_message",
+        "data"
+      ]
+    },
+    "WebhooksGetResponse": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                }
+              },
+              "required": [
+                "href"
+              ]
+            },
+            "first": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "href"
+              ]
+            },
+            "last": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "href"
+              ]
+            },
+            "prev": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "href"
+              ]
+            },
+            "next": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "href"
+              ]
+            },
+            "required": [
+              "self"
+            ]
+          }
+        },
+        "_embedded": {
+          "type": "object",
+          "required": [
+            "webhooks",
+            "page_count",
+            "page_size",
+            "total_items",
+            "page"
+          ],
+          "properties": {
+            "webhooks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "description",
+                  "hooks"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 36
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  },
+                  "hooks": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/WebhooksCommonWebhookItem"
+                    }
+                  },
+                  "authentication": {
+                    "$ref": "#/definitions/WebhooksCommonParameterAuthentication"
+                  }
+                }
+              }
+            },
+            "page_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "page_size": {
+              "type": "integer",
+              "minimum": 25
+            },
+            "total_items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "WebhooksCommonParameterAuthentication" : {
+      "type": "object",
+      "required": [
+        "endpoint"
+      ],
+      "properties": {
+        "grant_type": {
+          "description": "OAuth2 grant_type",
+          "example": "client_credentials",
+          "type": "string",
+          "minLength": 1,
+          "maxLenght": 100
+        },
+        "endpoint": {
+          "description": "Authorization endpoint URI",
+          "format": "uri",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "credentials": {
+          "description": "Credentials appropriate to OAuth2 grant_type",
+          "type": "object",
+          "example": {
+            "client_id":"doo-webhook-user",
+            "client_secret":"doo-webhook-secret"
+          }
+        },
+        "header_format": {
+          "description": "Additional header used for access_token",
+          "example": "Oauth-Token",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "header_value_format": {
+          "description": "Value with placeholder for header used for access_token",
+          "pattern": "^.*\\%ACCESS_TOKEN\\%.*$",
+          "example": "Bearer %ACCESS_TOKEN%",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "WebhooksCommonWebhookItem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "enum": [
+            "event_created",
+            "event_removed",
+            "event_updated",
+            "order_cancelled",
+            "order_created",
+            "order_removed",
+            "order_updated"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10,
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        "endpoint": {
+          "format": "uri",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "type",
+        "method",
+        "endpoint"
+      ]
+    }
+  }
+}
+
     }
   }
 }
