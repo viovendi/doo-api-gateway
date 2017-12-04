@@ -2189,6 +2189,169 @@
           "type": "http_proxy"
         }
       }
+    },
+    "/events/notify": {
+      "get": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Triggers webhooks for events",
+        "description": "Triggers webhooks for all events for current user.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Date from (example: date_from=2017-01-01)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "Date from (example: date_to=2017-05-19)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {}
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "uri": "https://${stageVariables.ApiUrl}/events/notify",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      }
+    },
+    "/events/{eventId}/orders-notify": {
+      "get": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Triggers webhooks for events",
+        "description": "Triggers webhooks for all events for current user.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Date from (example: date_from=2017-01-01)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "Date from (example: date_to=2017-05-19)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {}
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "requestParameters": {
+            "integration.request.path.eventId": "method.request.path.eventId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/events/{eventId}/orders-notify",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      }
     }
   },
   "securityDefinitions": {
