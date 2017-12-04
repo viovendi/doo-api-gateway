@@ -2038,10 +2038,6 @@
           "200": {
             "description": "200 response",
             "schema": {}
-          },
-          "201": {
-            "description": "201 response",
-            "schema": {}
           }
         },
         "security": [
@@ -2094,28 +2090,6 @@
                 "type": "string"
               }
             }
-          },
-          "400": {
-            "description": "400 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
-          },
-          "500": {
-            "description": "500 response",
-            "schema": {
-              "$ref": "#/definitions/CommonStatusResponse"
-            },
-            "headers": {
-              "Content-Type": {
-                "type": "string"
-              }
-            }
           }
         },
         "security": [
@@ -2140,7 +2114,7 @@
           "webhooks"
         ],
         "summary": "Trigger event webhooks",
-        "description": "Triggers webhooks for all events for current user.",
+        "description": "Trigger webhooks for all events for current user.",
         "consumes": [
           "application/json"
         ],
