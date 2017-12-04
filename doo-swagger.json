@@ -2270,6 +2270,69 @@
           "type": "http_proxy"
         }
       }
+    },
+    "/organizers/current/organizations": {
+      "get": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Get current organizations",
+        "description": "Get all organizations for the current user.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/hal+json"
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "Should be `Bearer access_token`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Default `application/json`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {}
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "x-amazon-apigateway-integration": {
+          "uri": "https://${stageVariables.ApiUrl}/organizers/current/organizations",
+          "passthroughBehavior": "when_no_match",
+          "httpMethod": "GET",
+          "type": "http_proxy"
+        }
+      }
     }
   },
   "securityDefinitions": {
