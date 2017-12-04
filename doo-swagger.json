@@ -2195,7 +2195,7 @@
         "tags": [
           "webhooks"
         ],
-        "summary": "Triggers webhooks for events",
+        "summary": "Trigger event webhooks",
         "description": "Triggers webhooks for all events for current user.",
         "consumes": [
           "application/json"
@@ -2272,7 +2272,7 @@
         "tags": [
           "webhooks"
         ],
-        "summary": "Triggers webhooks for orders",
+        "summary": "Trigger order webhooks",
         "description": "Trigger webhooks for all bookings of a particular event.",
         "consumes": [
           "application/json"
