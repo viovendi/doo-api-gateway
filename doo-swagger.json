@@ -2108,7 +2108,7 @@
         }
       }
     },
-    "/events/notify": {
+    "/team/{teamId}/events/notify": {
       "get": {
         "tags": [
           "webhooks"
@@ -2152,6 +2152,12 @@
             "type": "string"
           },
           {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "date_from",
             "in": "query",
             "description": "Date from (example: date_from=2017-01-01)",
@@ -2177,8 +2183,11 @@
             "api_key": []
           }
         ],
+        "requestParameters": {
+          "integration.request.path.teamId": "method.request.path.teamId"
+        },
         "x-amazon-apigateway-integration": {
-          "uri": "https://${stageVariables.ApiUrl}/events/notify",
+          "uri": "https://${stageVariables.ApiUrl}/team/{teamId}/events/notify",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
           "type": "http_proxy"
