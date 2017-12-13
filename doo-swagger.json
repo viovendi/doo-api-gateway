@@ -1917,7 +1917,7 @@
         }
       }
     },
-    "/webhooks": {
+    "/team/{teamId}/webhooks": {
       "get": {
         "tags": [
           "webhooks"
@@ -1961,6 +1961,12 @@
             "type": "string"
           },
           {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "Page number",
@@ -1980,7 +1986,10 @@
           }
         ],
         "x-amazon-apigateway-integration": {
-          "uri": "https://${stageVariables.ApiUrl}/webhooks",
+          "requestParameters": {
+            "integration.request.path.teamId": "method.request.path.teamId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/team/{teamId}/webhooks",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
           "type": "http_proxy"
@@ -2029,6 +2038,12 @@
             "type": "string"
           },
           {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "in": "body",
             "required": true,
             "schema": {}
@@ -2046,7 +2061,10 @@
           }
         ],
         "x-amazon-apigateway-integration": {
-          "uri": "https://${stageVariables.ApiUrl}/webhooks",
+          "requestParameters": {
+            "integration.request.path.teamId": "method.request.path.teamId"
+          },
+          "uri": "https://${stageVariables.ApiUrl}/team/{teamId}/webhooks",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "POST",
           "type": "http_proxy"
@@ -2183,10 +2201,10 @@
             "api_key": []
           }
         ],
-        "requestParameters": {
-          "integration.request.path.teamId": "method.request.path.teamId"
-        },
         "x-amazon-apigateway-integration": {
+          "requestParameters": {
+            "integration.request.path.teamId": "method.request.path.teamId"
+          },
           "uri": "https://${stageVariables.ApiUrl}/team/{teamId}/events/notify",
           "passthroughBehavior": "when_no_match",
           "httpMethod": "GET",
